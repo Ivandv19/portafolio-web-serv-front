@@ -1,0 +1,79 @@
+---
+
+import { getCloudflareImage } from '../utils/images';
+
+const testimonios = [
+  {
+    nombre: "Oscar Mendoza",
+    puesto: 'Dueño, Cantina "La 15"',
+    img: "https://i.pravatar.cc/150?u=oscar",
+    texto: "Ivan nos ayudó con el menú digital y el sitio web del bar. Ahora es mucho más fácil para nuestros clientes reservar."
+  },
+  {
+    nombre: "Claudia Ortiz",
+    puesto: "Co-fundadora, Envíos Express Local",
+    img: "https://i.pravatar.cc/150?u=claudia",
+    texto: "Como startup pequeña ocupábamos una landing que explicara rápido nuestro servicio. Ivan entendió la idea a la primera."
+  },
+  {
+    nombre: "Javier Solís",
+    puesto: "Propietario, Refaccionaria El Güero",
+    img: "https://i.pravatar.cc/150?u=javier",
+    texto: "Buscaba digitalizar el catálogo de la refaccionaria e Ivan hizo un excelente trabajo. Es una persona confiable."
+  }
+];
+---
+
+<section id="testimonios" class="py-24 px-4 lg:px-20 bg-base-100">
+  <div class="text-center mb-16">
+    <h2 class="text-4xl font-bold mb-4">Lo que dicen mis clientes</h2>
+    <p class="text-lg opacity-70">
+      Confianza respaldada por resultados y soporte técnico de calidad.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {testimonios.map((item) => (
+      <div class="card bg-base-200 p-8 shadow-sm border border-base-content/5 relative">
+        <span class="text-6xl text-primary/20 absolute top-4 right-8 font-serif">“</span>
+        
+        <div class="flex items-center gap-4 mb-6">
+          <div class="avatar">
+            <div class="w-12 rounded-full overflow-hidden ring ring-primary ring-offset-base-100 ring-offset-1">
+              
+              <img 
+                src={getCloudflareImage(item.img, 100)} 
+                srcset={`
+                  ${getCloudflareImage(item.img, 50)} 1x,
+                  ${getCloudflareImage(item.img, 100)} 2x
+                `}
+                sizes="48px"
+                alt={item.nombre} 
+                width="48" 
+                height="48"
+                loading="lazy"
+                decoding="async"
+                class="object-cover w-full h-full"
+              />
+
+            </div>
+          </div>
+          <div>
+            <h4 class="font-bold">{item.nombre}</h4>
+            <p class="text-xs opacity-60">{item.puesto}</p>
+          </div>
+        </div>
+        
+        <p class="text-sm italic opacity-80 leading-relaxed">
+          "{item.texto}"
+        </p>
+        
+        <div class="rating rating-xs mt-4">
+          {[1,2,3,4,5].map(() => (
+            <input type="radio" class="mask mask-star-2 bg-warning" checked disabled />
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

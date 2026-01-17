@@ -1,0 +1,93 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" data-theme="dark" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portafolio de Ivan Cruz, Desarrollador Web Frontend especializado en React, Astro y Cloud Hosting." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="flex flex-col min-h-screen bg-base-100 antialiased">
+    
+    <header class="navbar bg-base-100/80 backdrop-blur-md border-b border-base-content/10 sticky top-0 z-50 px-4 lg:px-20">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <label tabindex="0" class="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
+          </label>
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52 font-medium">
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li class="mt-2"><a href="#contacto" class="btn btn-primary btn-sm text-white">Contacto</a></li>
+          </ul>
+        </div>
+
+        <a href="#hero" class="text-xl font-bold tracking-tighter">
+          Desarrollo web y <span class="text-primary"> Hosting</span>
+        </a>
+      </div>
+
+      <div class="navbar-end hidden lg:flex">
+        <ul class="menu menu-horizontal px-1 font-medium gap-2">
+          <li><a href="#hero" class="hover:text-primary transition-colors">Inicio</a></li>
+          <li><a href="#servicios" class="hover:text-primary transition-colors">Servicios</a></li>
+          <li><a href="#proyectos" class="hover:text-primary transition-colors">Proyectos</a></li>
+          <li><a href="#testimonios" class="hover:text-primary transition-colors">Testimonios</a></li>
+          <li><a href="#sobre-mi" class="hover:text-primary transition-colors">Sobre mí</a></li>
+        </ul>
+        <a href="#contacto" class="btn btn-primary btn-sm ml-4 text-white border-none px-6">
+          Contacto
+        </a>
+      </div>
+    </header>
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    {/* 1. En el <footer> agregué 'flex flex-col': Esto obliga a que el bloque de enlaces quede ARRIBA y el copyright ABAJO en celular.
+       2. Agregué 'md:grid': Para que en Tablet/PC regrese a su modo original y no se rompa lo que ya te gustaba.
+    */}
+    <footer class="footer p-10 bg-neutral text-neutral-content footer-center rounded-t-[3rem] mt-20 flex flex-col md:grid">
+      
+      {/* 1. Quité 'grid-cols-2': Eso era lo que te los ponía en columna/cuadrado.
+         2. Puse 'flex flex-wrap justify-center': Esto pone los enlaces en una FILA horizontal. Si no caben, bajan al siguiente renglón, pero siempre intentan estar en fila.
+         3. Mantuve 'md:grid-flow-col': Para que en PC se vea igual que antes.
+      */}
+      <nav class="flex flex-wrap justify-center gap-4 text-sm opacity-80 font-medium md:grid-flow-col">
+        <a href="#hero" class="link link-hover">Inicio</a>
+        <a href="#servicios" class="link link-hover">Servicios</a>
+        <a href="#proyectos" class="link link-hover">Proyectos</a>
+        <a href="#testimonios" class="link link-hover">Testimonios</a>
+        <a href="#sobre-mi" class="link link-hover">Sobre mí</a>
+        <a href="#contacto" class="link link-hover">Contacto</a>
+      </nav>
+      
+      <div class="divider divider-horizontal opacity-5 hidden md:flex"></div>
+      
+      <aside>
+        <p class="text-xs opacity-50">
+          © 2026 - <span class="font-bold">Ivan Cruz</span> | Global Web Solutions
+        </p>
+        <div class="flex gap-4 mt-4 opacity-50 justify-center md:justify-start">
+          <span class="text-[10px] font-black tracking-widest uppercase">Fullstack Infrastructure</span>
+        </div>
+      </aside>
+    </footer>
+  </body>
+</html>
