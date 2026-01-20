@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://web-portfolio-f.mgdc.site/sitemap-index.xml
