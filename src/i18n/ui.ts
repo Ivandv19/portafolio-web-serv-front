@@ -81,6 +81,9 @@ export const ui = {
     'contact.form.error': 'Algo salió mal. Por favor, inténtalo de nuevo.',
     'footer.rights': '© 2026 - <span class="font-bold">Ivan Cruz</span> | Global Web Solutions',
     'footer.role': 'Fullstack Infrastructure',
+    '404.title': 'Página no encontrada',
+    '404.desc': 'Parece que te has perdido en la nube. La página que buscas no existe o ha sido movida.',
+    '404.button': 'Volver al inicio',
   },
   en: {
     'nav.home': 'Home',
@@ -157,5 +160,8 @@ export const ui = {
     'contact.form.error': 'Something went wrong. Please try again.',
     'footer.rights': '© 2026 - <span class="font-bold">Ivan Cruz</span> | Global Web Solutions',
     'footer.role': 'Fullstack Infrastructure',
+    '404.title': 'Page not found',
+    '404.desc': 'It seems you are lost in the cloud. The page you are looking for does not exist or has been moved.',
+    '404.button': 'Back to home',
   },
 } as const;

@@ -1,0 +1,73 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { useTranslations } from "../i18n/utils";
+
+// Por defecto usamos español para el 404 estático
+// Si el usuario tenía preferencia en inglés, podríamos intentar manejarlo con JS cliente,
+// pero un 404 limpio en español / inglés visual es suficiente.
+const t = useTranslations('es');
+---
+
+<Layout title="404 - Página no encontrada" lang="es">
+  <div class="hero min-h-[80vh] flex items-center justify-center text-center px-4">
+    <div class="max-w-md">
+      <!-- Icono animado o ilustrativo -->
+      <div class="mb-8 flex justify-center">
+        <div class="relative">
+          <div class="absolute -inset-4 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100"
+            height="100"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="text-primary relative z-10"
+          >
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </div>
+      </div>
+
+      <h1 class="text-7xl font-black mb-4">404</h1>
+      
+      <h2 id="title404" class="text-2xl font-bold mb-4">{t('404.title')}</h2>
+      
+      <p id="desc404" class="py-6 text-lg opacity-70">
+        {t('404.desc')}
+      </p>
+      
+      <a id="btn404" href="/" class="btn btn-primary text-white btn-wide">
+        {t('404.button')}
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Pequeño script para comprobar si el usuario habla inglés y ajustar el texto al vuelo
+  // Esto es opcional, pero le da un toque premium.
+  import { ui } from '../i18n/ui';
+
+  const storedLang = sessionStorage.getItem('preferred_lang');
+  const browserLang = navigator.language?.split('-')[0];
+  const lang = storedLang || browserLang;
+
+  if (lang === 'en') {
+    const title = document.getElementById('title404');
+    const desc = document.getElementById('desc404');
+    const btn = document.getElementById('btn404');
+
+    if (title) title.innerText = ui.en['404.title'];
+    if (desc) desc.innerText = ui.en['404.desc'];
+    if (btn) {
+      btn.innerText = ui.en['404.button'];
+      btn.setAttribute('href', '/en/'); // Redirigir al home en inglés
+    }
+  }
+</script>
