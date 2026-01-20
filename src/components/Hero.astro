@@ -2,6 +2,15 @@
 import { Github, Linkedin, ArrowUpRight, GraduationCap } from '@lucide/astro';
 
 import { getCloudflareImage } from '../utils/images.js';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+
 const githubAvatar = 'https://avatars.githubusercontent.com/u/157653669';
 ---
 
@@ -36,20 +45,15 @@ const githubAvatar = 'https://avatars.githubusercontent.com/u/157653669';
 
     <div class="text-center lg:text-left max-w-2xl">
       <h1 class="text-5xl md:text-6xl font-black mb-4 leading-tight">
-        Hola, soy <span class="text-primary">Ivan Cruz</span> y construyo páginas
-        web
+        {t('hero.greeting')} <span class="text-primary">Ivan Cruz</span> {t('hero.role')}
       </h1>
 
       <p class="py-6 text-lg opacity-90 leading-relaxed">
-        Soy un <strong>Desarrollador Web Frontend</strong> apasionado por la tecnología.
-        Me encanta crear interfaces atractivas y optimizadas, ofreciendo además
-        <strong>soluciones de hosting</strong> para garantizar que tus proyectos estén
-        siempre en línea. Actualmente fortaleciendo mis habilidades en computación
-        en la nube para aportar valor global.
+        <span set:html={t('hero.description')} />
       </p>
 
       <div class="flex flex-wrap gap-4 justify-center lg:justify-start mb-8">
-        <a href="#proyectos" class="btn btn-primary">Ver Servicios</a>
+        <a href="#proyectos" class="btn btn-primary">{t('hero.cta')}</a>
       </div>
 
       {/* 3. LINKS REDES SOCIALES */}

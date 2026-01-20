@@ -1,15 +1,18 @@
 ---
 import "../styles/global.css";
+import { useTranslations } from "../i18n/utils";
 
 interface Props {
-	title: string;
+  title: string;
+  lang?: "es" | "en";
 }
 
-const { title } = Astro.props;
+const { title, lang = "es" } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
-<html lang="es" data-theme="dark" class="scroll-smooth">
+<html lang={lang} data-theme="dark" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,12 +31,21 @@ const { title } = Astro.props;
             </svg>
           </label>
           <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52 font-medium">
-            <li><a href="#hero">Inicio</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#proyectos">Proyectos</a></li>
-            <li><a href="#testimonios">Testimonios</a></li>
-            <li><a href="#sobre-mi">Sobre mí</a></li>
-            <li class="mt-2"><a href="#contacto" class="btn btn-primary btn-sm text-white">Contacto</a></li>
+            <li><a href="#hero">{t('nav.home')}</a></li>
+            <li><a href="#servicios">{t('nav.services')}</a></li>
+            <li><a href="#proyectos">{t('nav.projects')}</a></li>
+            <li><a href="#testimonios">{t('nav.testimonials')}</a></li>
+            <li><a href="#sobre-mi">{t('nav.about')}</a></li>
+            <li>
+              <details>
+                <summary>Language: {lang.toUpperCase()}</summary>
+                <ul>
+                  <li><a href="/" class={lang === 'es' ? 'active' : ''}>Español</a></li>
+                  <li><a href="/en/" class={lang === 'en' ? 'active' : ''}>English</a></li>
+                </ul>
+              </details>
+            </li>
+            <li class="mt-2"><a href="#contacto" class="btn btn-primary btn-sm text-white">{t('nav.contact')}</a></li>
           </ul>
         </div>
 
@@ -44,15 +56,43 @@ const { title } = Astro.props;
 
       <div class="navbar-end hidden lg:flex">
         <ul class="menu menu-horizontal px-1 font-medium gap-2">
-          <li><a href="#hero" class="hover:text-primary transition-colors">Inicio</a></li>
-          <li><a href="#servicios" class="hover:text-primary transition-colors">Servicios</a></li>
-          <li><a href="#proyectos" class="hover:text-primary transition-colors">Proyectos</a></li>
-          <li><a href="#testimonios" class="hover:text-primary transition-colors">Testimonios</a></li>
-          <li><a href="#sobre-mi" class="hover:text-primary transition-colors">Sobre mí</a></li>
+          <li><a href="#hero" class="hover:text-primary transition-colors">{t('nav.home')}</a></li>
+          <li><a href="#servicios" class="hover:text-primary transition-colors">{t('nav.services')}</a></li>
+          <li><a href="#proyectos" class="hover:text-primary transition-colors">{t('nav.projects')}</a></li>
+          <li><a href="#testimonios" class="hover:text-primary transition-colors">{t('nav.testimonials')}</a></li>
+          <li><a href="#sobre-mi" class="hover:text-primary transition-colors">{t('nav.about')}</a></li>
         </ul>
+
         <a href="#contacto" class="btn btn-primary btn-sm ml-4 text-white border-none px-6">
-          Contacto
+          {t('nav.contact')}
         </a>
+        
+        <!-- Desktop Language Selector -->
+        <div class="dropdown dropdown-end ml-4">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-sm gap-2">
+            {lang === 'es' ? 'Español' : 'English'}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="opacity-60"
+              ><path d="m6 9 6 6 6-6"></path></svg
+            >
+          </div>
+          <ul
+            tabindex="0"
+            class="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52"
+          >
+            <li><a href="/" class={lang === 'es' ? 'active' : ''}>Español</a></li>
+            <li><a href="/en/" class={lang === 'en' ? 'active' : ''}>English</a></li>
+          </ul>
+        </div>
       </div>
     </header>
 
@@ -70,22 +110,22 @@ const { title } = Astro.props;
          3. Mantuve 'md:grid-flow-col': Para que en PC se vea igual que antes.
       */}
       <nav class="flex flex-wrap justify-center gap-4 text-sm opacity-80 font-medium md:grid-flow-col">
-        <a href="#hero" class="link link-hover">Inicio</a>
-        <a href="#servicios" class="link link-hover">Servicios</a>
-        <a href="#proyectos" class="link link-hover">Proyectos</a>
-        <a href="#testimonios" class="link link-hover">Testimonios</a>
-        <a href="#sobre-mi" class="link link-hover">Sobre mí</a>
-        <a href="#contacto" class="link link-hover">Contacto</a>
+        <a href="#hero" class="link link-hover">{t('nav.home')}</a>
+        <a href="#servicios" class="link link-hover">{t('nav.services')}</a>
+        <a href="#proyectos" class="link link-hover">{t('nav.projects')}</a>
+        <a href="#testimonios" class="link link-hover">{t('nav.testimonials')}</a>
+        <a href="#sobre-mi" class="link link-hover">{t('nav.about')}</a>
+        <a href="#contacto" class="link link-hover">{t('nav.contact')}</a>
       </nav>
       
       <div class="divider divider-horizontal opacity-5 hidden md:flex"></div>
       
       <aside>
         <p class="text-xs opacity-50">
-          © 2026 - <span class="font-bold">Ivan Cruz</span> | Global Web Solutions
+          <span set:html={t('footer.rights')} />
         </p>
         <div class="flex gap-4 mt-4 opacity-50 justify-center md:justify-start">
-          <span class="text-[10px] font-black tracking-widest uppercase">Fullstack Infrastructure</span>
+          <span class="text-[10px] font-black tracking-widest uppercase">{t('footer.role')}</span>
         </div>
       </aside>
     </footer>

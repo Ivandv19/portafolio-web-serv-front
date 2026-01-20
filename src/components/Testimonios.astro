@@ -1,6 +1,14 @@
 ---
 
 import { getCloudflareImage } from "../utils/images";
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
 
 const testimonios = [
 	{
@@ -29,9 +37,9 @@ const testimonios = [
 
 <section id="testimonios" class="py-24 px-4 lg:px-20 bg-base-100">
   <div class="text-center mb-16">
-    <h2 class="text-4xl font-bold mb-4">Lo que dicen mis clientes</h2>
+    <h2 class="text-4xl font-bold mb-4">{t('testimonials.title')}</h2>
     <p class="text-lg opacity-70">
-      Confianza respaldada por resultados y soporte técnico de calidad.
+      {t('testimonials.desc')}
     </p>
   </div>
 

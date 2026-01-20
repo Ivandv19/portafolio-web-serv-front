@@ -8,11 +8,25 @@ import Testimonios from "../components/Testimonios.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Ivan Cruz | Frontend Developer & Hosting">
-	<Hero />
-	<Services />
-	<Projects />
-	<Testimonios />
-	<About />
-	<Contact />
+<Layout title="Ivan Cruz | Frontend Developer & Hosting" lang="es">
+	<Hero lang="es" />
+	<Services lang="es" />
+	<Projects lang="es" />
+	<Testimonios lang="es" />
+	<About lang="es" />
+	<Contact lang="es" />
 </Layout>
+
+<script>
+  const browserLang = navigator.language?.split('-')[0];
+  const storedLang = sessionStorage.getItem('preferred_lang');
+
+  if (!storedLang) {
+    if (browserLang === 'en') {
+       sessionStorage.setItem('preferred_lang', 'en');
+       window.location.href = '/en/';
+    } else {
+       sessionStorage.setItem('preferred_lang', 'es');
+    }
+  }
+</script>

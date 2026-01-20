@@ -1,11 +1,21 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+---
+
 <section id="servicios" class="py-24 px-4 lg:px-20 bg-base-100">
   <div class="max-w-4xl mx-auto text-center mb-16">
     <h2 class="text-4xl font-black mb-4 uppercase tracking-tight">
-      Soluciones Web
+      {t('services.title')}
     </h2>
     <p class="text-lg opacity-70">
-      Desarrollo especializado utilizando el stack más moderno y eficiente del
-      mercado.
+      {t('services.subtitle')}
     </p>
   </div>
 
@@ -15,10 +25,9 @@
     >
       <div class="card-body">
         <div class="text-4xl mb-2">⚡</div>
-        <h3 class="card-title text-2xl font-bold">Landing Pages</h3>
+        <h3 class="card-title text-2xl font-bold">{t('services.landing.title')}</h3>
         <p class="text-sm opacity-80 min-h-[60px]">
-          Sitios de una sola página optimizados para convertir visitantes en
-          clientes. Enfoque total en velocidad y SEO.
+          {t('services.landing.desc')}
         </p>
       </div>
     </div>
@@ -28,10 +37,9 @@
     >
       <div class="card-body">
         <div class="text-4xl mb-2">🎨</div>
-        <h3 class="card-title text-2xl font-bold">Portafolios</h3>
+        <h3 class="card-title text-2xl font-bold">{t('services.portfolio.title')}</h3>
         <p class="text-sm opacity-80 min-h-[60px]">
-          Marca personal con diseño único. Interfaces fluidas que muestran tu
-          trabajo de la forma más profesional posible.
+          {t('services.portfolio.desc')}
         </p>
       </div>
     </div>
@@ -41,10 +49,9 @@
     >
       <div class="card-body">
         <div class="text-4xl mb-2">✍️</div>
-        <h3 class="card-title text-2xl font-bold">Blogs & News</h3>
+        <h3 class="card-title text-2xl font-bold">{t('services.blog.title')}</h3>
         <p class="text-sm opacity-80 min-h-[60px]">
-          Sistemas de gestión de contenido para que puedas publicar noticias o
-          artículos fácilmente sin tocar código.
+          {t('services.blog.desc')}
         </p>
       </div>
     </div>
@@ -63,10 +70,10 @@
     <div class="max-w-4xl mx-auto text-center mb-16">
       
       <h2 class="text-3xl font-black mb-4 uppercase tracking-tight">
-        Infraestructura & Despliegue
+        {t('services.infra.title')}
       </h2>
       <p class="text-lg opacity-70">
-        No solo construyo tu web, le doy el mejor hogar en la nube.
+        {t('services.infra.desc')}
       </p>
     </div>
 
@@ -77,7 +84,7 @@
         <div class="card-body">
           <div class="flex items-start justify-between mb-4">
             <h3 class="card-title text-2xl font-bold text-secondary">
-              Managed Hosting
+              {t('services.managed.title')}
             </h3>
             <div class="text-3xl group-hover:rotate-12 transition-transform">
               🚀
@@ -85,39 +92,38 @@
           </div>
 
           <p class="text-sm opacity-80 my-4">
-            Me encargo de toda la configuración técnica. Tu sitio vivirá en
-            servidores de alto rendimiento optimizados para tu solucion.
+            {t('services.managed.desc')}
           </p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6">
             <div class="flex items-center gap-3 text-sm">
               <span class="text-secondary font-bold text-lg">✦</span>
-              <span>Dominio personalizado (.com)</span>
+              <span>{t('services.features.domain')}</span>
             </div>
 
             <div class="flex items-center gap-3 text-sm">
               <span class="text-secondary font-bold text-lg">✦</span>
-              <span>Correo profesional (@tu-marca)</span>
+              <span>{t('services.features.email')}</span>
             </div>
 
             <div class="flex items-center gap-3 text-sm">
               <span class="text-secondary font-bold text-lg">✦</span>
-              <span>Certificado de seguridad SSL</span>
+              <span>{t('services.features.ssl')}</span>
             </div>
 
             <div class="flex items-center gap-3 text-sm">
               <span class="text-secondary font-bold text-lg">✦</span>
-              <span>Carga ultra-rápida (< 2s)</span>
+              <span>{t('services.features.speed')}</span>
             </div>
 
             <div class="flex items-center gap-3 text-sm">
               <span class="text-secondary font-bold text-lg">✦</span>
-              <span>Protección activa 24/7</span>
+              <span>{t('services.features.protection')}</span>
             </div>
 
             <div class="flex items-center gap-3 text-sm">
               <span class="text-secondary font-bold text-lg">✦</span>
-              <span>Mantenimiento técnico</span>
+              <span>{t('services.features.maintenance')}</span>
             </div>
           </div>
         </div>
@@ -129,28 +135,27 @@
         <div class="card-body">
           <div class="flex items-start justify-between mb-4">
             <h3 class="card-title text-2xl font-bold text-primary">
-              Seguridad & CDN
+              {t('services.security.title')}
             </h3>
             <div class="text-3xl group-hover:scale-110 transition-transform">
               🛡️
             </div>
           </div>
           <p class="text-sm opacity-80 my-4">
-            Implementación de capas de seguridad global para proteger tu sitio
-            contra ataques y mejorar la velocidad en todo el mundo.
+            {t('services.security.desc')}
           </p>
           <div class="space-y-4">
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>Protección Anti-DDoS Avanzada</span>
+              <span>{t('services.security.ddos')}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>Distribución Global (Edge Network)</span>
+              <span>{t('services.security.global')}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>Optimización de imágenes automática</span>
+              <span>{t('services.security.images')}</span>
             </div>
           </div>
         </div>

@@ -1,29 +1,35 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+---
+
 <section id="sobre-mi" class="py-24 px-4 lg:px-20 bg-base-200/50">
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
     <div>
-      <h2 class="text-4xl font-bold mb-6">Mi Trayectoria</h2>
+      <h2 class="text-4xl font-bold mb-6">{t('about.title')}</h2>
       <div class="prose prose-lg opacity-80">
         <p>
-          Soy un <strong>Desarrollador Web Frontend Jr</strong> apasionado por crear
-          interfaces atractivas, modernas y optimizadas. Mi enfoque principal es mejorar
-          la experiencia del usuario mediante tecnologías actuales.
+          <span set:html={t('about.p1')} />
         </p>
         <p>
-          Actualmente, perfecciono mis habilidades en <strong
-            >Backend y Cloud Computing</strong
-          > para ofrecer soluciones integrales, desde el diseño visual hasta una infraestructura
-          en la nube sólida y escalable.
+          <span set:html={t('about.p2')} />
         </p>
       </div>
 
       <div class="flex gap-8 mt-10">
         <div>
           <div class="text-3xl font-bold text-primary">+20</div>
-          <div class="text-xs uppercase opacity-60">Proyectos</div>
+          <div class="text-xs uppercase opacity-60">{t('about.stats.projects')}</div>
         </div>
         <div>
           <div class="text-3xl font-bold text-secondary">+2</div>
-          <div class="text-xs uppercase opacity-60">Años Exp.</div>
+          <div class="text-xs uppercase opacity-60">{t('about.stats.exp')}</div>
         </div>
       </div>
     </div>
@@ -44,7 +50,7 @@
           ><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path
             d="M6 12v5c3 3 9 3 12 0v-5"></path></svg
         >
-        Educación & Certificaciones
+        {t('about.education.title')}
       </h3>
 
       <ul
@@ -66,11 +72,11 @@
           <div class="timeline-start md:text-end mb-10">
             <time class="font-mono italic opacity-60">Nov 2024 - Dic 2025</time>
             <div class="text-lg font-black text-secondary">
-              Desarrollador Backend | DevOps & Cloud Computing
+              {t('about.job1.role')}
             </div>
 
             <p class="text-sm opacity-70">
-              Enfoque en Azure, CI/CD, Node.js e IA Generativa.
+              {t('about.job1.desc')}
             </p>
           </div>
           <hr class="bg-primary" />
@@ -93,14 +99,13 @@
           <div class="timeline-end mb-10">
             <time class="font-mono italic opacity-60">Ene 2024 - Oct 2024</time>
             <div class="text-lg font-black font-primary text-primary">
-              Desarrollador Frontend & Cloud Computing (OCI)
+              {t('about.job2.role')}
             </div>
             <p class="text-xs font-bold opacity-60 uppercase mb-1">
-              Alura Latam / Oracle Next Education
+              {t('about.job2.company')}
             </p>
             <p class="text-sm opacity-70">
-              Especialización en React.js, Metodologías Ágiles e infraestructura
-              en Oracle Cloud.
+              {t('about.job2.desc')}
             </p>
           </div>
           <hr class="bg-primary" />
@@ -122,13 +127,12 @@
           </div>
           <div class="timeline-start md:text-end mb-10">
             <time class="font-mono italic opacity-60">Jun 2017 - Jun 2020</time>
-            <div class="text-lg font-black">Técnico en Programación</div>
+            <div class="text-lg font-black">{t('about.job3.role')}</div>
             <p class="text-xs font-bold opacity-60 uppercase mb-1">
-              CECyTEM Chimalhuacán II
+              {t('about.job3.company')}
             </p>
             <p class="text-sm opacity-70">
-              Bases sólidas en lógica de programación, Java, redes y
-              mantenimiento de equipos.
+              {t('about.job3.desc')}
             </p>
           </div>
         </li>
