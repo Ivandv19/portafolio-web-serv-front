@@ -52,8 +52,8 @@ const t = useTranslations(lang);
               <details>
                 <summary>Language: {lang.toUpperCase()}</summary>
                 <ul>
-                  <li><a href="/" data-astro-prefetch class={lang === 'es' ? 'active' : ''}>Español</a></li>
-                  <li><a href="/en/" data-astro-prefetch class={lang === 'en' ? 'active' : ''}>English</a></li>
+                  <li><a href="/" class={lang === 'es' ? 'active' : ''}>Español</a></li>
+                  <li><a href="/en/" class={lang === 'en' ? 'active' : ''}>English</a></li>
                 </ul>
               </details>
             </li>
@@ -101,8 +101,8 @@ const t = useTranslations(lang);
             tabindex="0"
             class="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52"
           >
-            <li><a href="/" data-astro-prefetch class={lang === 'es' ? 'active' : ''}>Español</a></li>
-            <li><a href="/en/" data-astro-prefetch class={lang === 'en' ? 'active' : ''}>English</a></li>
+            <li><a href="/" class={lang === 'es' ? 'active' : ''}>Español</a></li>
+            <li><a href="/en/" class={lang === 'en' ? 'active' : ''}>English</a></li>
           </ul>
         </div>
       </div>
