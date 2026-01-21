@@ -13,7 +13,7 @@ const t = useTranslations(lang);
 
 <section id="proyectos" class="py-24 px-4 lg:px-20 bg-base-200">
   <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
-    <div class="max-w-xl">
+    <div class="max-w-xl animate-on-scroll">
       <h2 class="text-4xl font-bold mb-4">{t('projects.title')}</h2>
       <p class="text-lg opacity-70">
         {t('projects.desc')}
@@ -22,6 +22,7 @@ const t = useTranslations(lang);
     <a
       href="https://github.com/Ivandv19"
       target="_blank"
+      rel="noopener noreferrer"
       class="btn btn-outline btn-sm">{t('projects.view_git')}</a
     >
   </div>
@@ -29,7 +30,7 @@ const t = useTranslations(lang);
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     {
       proyectos.map((proyecto) => (
-        <div class="card bg-base-100 shadow-xl overflow-hidden group">
+        <div class="card bg-base-100 shadow-xl overflow-hidden group animate-on-scroll">
           <figure class="relative aspect-video overflow-hidden bg-base-300">
             <div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors z-10" />
 
@@ -62,11 +63,18 @@ const t = useTranslations(lang);
             <div class="mt-6 flex justify-between items-center">
               <a
                 href={proyecto.live}
+                target="_blank"
+                rel="noopener noreferrer"
                 class="text-primary font-bold hover:underline text-sm"
               >
                 {t('projects.demo')}
               </a>
-              <a href={proyecto.repo} class="btn btn-ghost btn-xs">
+              <a 
+                href={proyecto.repo} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn btn-ghost btn-xs"
+              >
                 Repo ↗
               </a>
             </div>

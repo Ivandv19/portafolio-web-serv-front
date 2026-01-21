@@ -16,9 +16,19 @@ const t = useTranslations(lang);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portafolio de Ivan Cruz, Desarrollador Web Frontend especializado en React, Astro y Cloud Hosting." />
+    <meta name="description" content={t('meta.description')} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+    
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YLWS6TY5V"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9YLWS6TY5V');
+    </script>
   </head>
   <body class="flex flex-col min-h-screen bg-base-100 antialiased">
     
@@ -129,5 +139,31 @@ const t = useTranslations(lang);
         </div>
       </aside>
     </footer>
+
+    <script>
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.addEventListener('astro:page-load', () => {
+        const hiddenElements = document.querySelectorAll('.animate-on-scroll');
+        hiddenElements.forEach((el) => observer.observe(el));
+      });
+      
+      // Initial check for non-view-transitions
+      const hiddenElements = document.querySelectorAll('.animate-on-scroll');
+      hiddenElements.forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>
