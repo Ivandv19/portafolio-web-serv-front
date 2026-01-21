@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { useTranslations } from "../i18n/utils";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -19,6 +20,7 @@ const t = useTranslations(lang);
     <meta name="description" content={t('meta.description')} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+    <ClientRouter />
     
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YLWS6TY5V"></script>
@@ -106,19 +108,14 @@ const t = useTranslations(lang);
       </div>
     </header>
 
-    <main class="flex-grow">
+    <main class="flex-grow" transition:animate="fade">
       <slot />
     </main>
 
-    {/* 1. En el <footer> agregué 'flex flex-col': Esto obliga a que el bloque de enlaces quede ARRIBA y el copyright ABAJO en celular.
-       2. Agregué 'md:grid': Para que en Tablet/PC regrese a su modo original y no se rompa lo que ya te gustaba.
-    */}
+  
     <footer class="footer p-10 bg-neutral text-neutral-content footer-center rounded-t-[3rem] mt-20 flex flex-col md:grid">
       
-      {/* 1. Quité 'grid-cols-2': Eso era lo que te los ponía en columna/cuadrado.
-         2. Puse 'flex flex-wrap justify-center': Esto pone los enlaces en una FILA horizontal. Si no caben, bajan al siguiente renglón, pero siempre intentan estar en fila.
-         3. Mantuve 'md:grid-flow-col': Para que en PC se vea igual que antes.
-      */}
+    
       <nav class="flex flex-wrap justify-center gap-4 text-sm opacity-80 font-medium md:grid-flow-col">
         <a href="#hero" class="link link-hover">{t('nav.home')}</a>
         <a href="#servicios" class="link link-hover">{t('nav.services')}</a>
@@ -160,10 +157,6 @@ const t = useTranslations(lang);
         const hiddenElements = document.querySelectorAll('.animate-on-scroll');
         hiddenElements.forEach((el) => observer.observe(el));
       });
-      
-      // Initial check for non-view-transitions
-      const hiddenElements = document.querySelectorAll('.animate-on-scroll');
-      hiddenElements.forEach((el) => observer.observe(el));
     </script>
   </body>
 </html>
