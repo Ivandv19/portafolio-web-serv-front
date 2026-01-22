@@ -1,6 +1,61 @@
 /*
+  # Previene clickjacking
   X-Frame-Options: DENY
+  
+  # Previene MIME-sniffing
   X-Content-Type-Options: nosniff
+  
+  # Protección XSS para navegadores legacy
+  X-XSS-Protection: 1; mode=block
+  
+  # Control de referrer
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+  
+  # Deshabilita APIs no necesarias
+  Permissions-Policy: camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+  
+  # Fuerza HTTPS por 1 año
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  
+  # Content Security Policy - Configurado para Google Analytics
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; font-src 'self' data:; connect-src 'self' https://cloudflareinsights.com https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com https://analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;
+
+# Cache Headers para Assets Estáticos (JS, CSS)
+# Browser: 1 año | CDN: 30 días (immutable porque tienen hash en el nombre)
+/*.js
+  Cache-Control: public, max-age=31536000, s-maxage=2592000, immutable
+
+/*.css
+  Cache-Control: public, max-age=31536000, s-maxage=2592000, immutable
+
+# Imágenes
+# Browser: 1 año | CDN: 7 días
+/*.png
+  Cache-Control: public, max-age=31536000, s-maxage=604800
+
+/*.jpg
+  Cache-Control: public, max-age=31536000, s-maxage=604800
+
+/*.jpeg
+  Cache-Control: public, max-age=31536000, s-maxage=604800
+
+/*.svg
+  Cache-Control: public, max-age=31536000, s-maxage=604800
+
+/*.webp
+  Cache-Control: public, max-age=31536000, s-maxage=604800
+
+/*.ico
+  Cache-Control: public, max-age=31536000, s-maxage=604800
+
+# HTML - Cache corto en CDN, revalidación en browser
+# Browser: revalidar siempre | CDN: 1 hora
+/*.html
+  Cache-Control: public, max-age=0, s-maxage=3600, must-revalidate
+
+# Manifest y Service Worker - Sin cache
+/manifest.json
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
