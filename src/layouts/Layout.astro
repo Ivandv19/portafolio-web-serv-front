@@ -31,6 +31,50 @@ const t = useTranslations(lang);
 
       gtag('config', 'G-9YLWS6TY5V');
     </script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ivan Cruz",
+      "url": "https://web-portfolio-f.mgdc.site",
+      "image": "https://web-portfolio-f.mgdc.site/favicon.svg",
+      "sameAs": [
+        "https://github.com/Ivandv19"
+      ],
+      "jobTitle": t('footer.role'),
+      "description": t('meta.description'),
+      "knowsAbout": [
+        "Frontend Development",
+        "React",
+        "Astro",
+        "Cloud Hosting",
+        "Infrastructure"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": t('services.title'),
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": t('services.landing.title'),
+              "description": t('services.landing.desc')
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": t('services.infra.title'),
+              "description": t('services.infra.desc')
+            }
+          }
+        ]
+      }
+    })}>
+    </script>
   </head>
   <body class="flex flex-col min-h-screen bg-base-100 antialiased">
     
