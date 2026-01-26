@@ -7,6 +7,8 @@ export const defaultLang = 'es';
 
 export const ui = {
   es: {
+    'nav.logo.text': 'Desarrollo web y',
+    'nav.logo.highlight': ' Hosting',
     'nav.home': 'Inicio',
     'nav.services': 'Servicios',
     'nav.projects': 'Proyectos',
@@ -87,6 +89,8 @@ export const ui = {
     '404.button': 'Volver al inicio',
   },
   en: {
+    'nav.logo.text': 'Web Development &',
+    'nav.logo.highlight': ' Hosting',
     'nav.home': 'Home',
     'nav.services': 'Services',
     'nav.projects': 'Projects',
