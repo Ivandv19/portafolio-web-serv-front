@@ -36,14 +36,14 @@ const testimonios = [
 ---
 
 <section id="testimonios" class="py-24 px-4 lg:px-20 bg-base-100">
-  <div class="text-center mb-16">
+  <div class="text-center mb-16 animate-on-scroll">
     <h2 class="text-4xl font-bold mb-4 text-base-content">{t('testimonials.title')}</h2>
     <p class="text-lg text-base-content/70">
       {t('testimonials.desc')}
     </p>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-on-scroll">
     {testimonios.map((item) => (
       <div class="card bg-base-200 p-8 shadow-sm border border-base-content/5 relative">
         <span class="text-6xl text-primary/20 absolute top-4 right-8 font-serif">“</span>
