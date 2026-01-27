@@ -204,6 +204,10 @@ const t = useTranslations(lang);
               required></textarea>
           </div>
 
+          <!-- Turnstile Widget -->
+          <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+          <div class="cf-turnstile" data-sitekey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY}></div>
+
           <div id="formStatus" class="hidden alert text-sm mt-2"></div>
 
           <div class="form-control mt-4">
@@ -245,6 +249,17 @@ const t = useTranslations(lang);
     // 2. Capturar datos de los inputs con 'name'
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
+    
+    // Validar token de Turnstile en frontend (opcional pero recomendado)
+    const turnstileToken = formData.get('cf-turnstile-response');
+    if (!turnstileToken) {
+       submitBtn.innerText = originalBtnText;
+       submitBtn.disabled = false;
+       statusDiv.innerText = "Por favor completa la verificación de seguridad (captcha).";
+       statusDiv.className = 'alert alert-warning mt-2 shadow-lg';
+       statusDiv.classList.remove('hidden');
+       return;
+    }
 
     try {
       // 3. Enviar a tu backend de Cloudflare

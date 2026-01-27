@@ -18,6 +18,26 @@ app.post("/send-email", async (c) => {
 			return c.json({ error: "Faltan datos obligatorios" }, 400);
 		}
 
+    // Validación Turnstile
+    const token = body['cf-turnstile-response'];
+    const ip = c.req.header('CF-Connecting-IP');
+
+    const formData = new FormData();
+    formData.append('secret', c.env.TURNSTILE_SECRET_KEY);
+    formData.append('response', token);
+    formData.append('remoteip', ip);
+
+    const turnstileResult = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const outcome = await turnstileResult.json();
+
+    if (!outcome.success) {
+      return c.json({ error: "Falló la verificación de seguridad (Captcha)" }, 403);
+    }
+
 		const resendRes = await fetch("https://api.resend.com/emails", {
 			method: "POST",
 			headers: {
