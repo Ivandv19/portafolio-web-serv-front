@@ -1,15 +1,58 @@
 @import "tailwindcss";
 
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: nord, business;
+}
 
 @plugin "@iconify/tailwind4";
 
-/* Animations */
+/*
+  Centralized Style System
+  Aligned with Blog & Pomodoro patterns.
+*/
+
+@theme {
+  /* Brand Colors matches DaisyUI */
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+
+  /* Global Fonts */
+  --font-outfit: 'Outfit', sans-serif;
+}
+
+:root {
+  /* Define defaults if necessary, but DaisyUI handles this */
+}
+
+/* Base Styles */
+body {
+  /* Use DaisyUI standard variables */
+  background-color: var(--fallback-b1, oklch(var(--b1)/1));
+  color: var(--fallback-bc, oklch(var(--bc)/1));
+  font-family: var(--font-outfit);
+
+  /* Smooth transition */
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Headings use System Font (User preference) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* ANIMATIONS */
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -25,4 +68,38 @@
 .animate-on-scroll.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  /* Initial state */
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Stagger delays for premium feel */
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animate-delay-500 {
+  animation-delay: 500ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-on-scroll,
+  .animate-fade-in-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
 }
