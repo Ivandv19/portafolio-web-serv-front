@@ -1,0 +1,103 @@
+---
+// src/components/LanguagePicker.astro
+import { languages } from "../i18n/ui";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const currentLang = Astro.currentLocale || 'es';
+// Detect if we are in a subpath like /en/some-page
+const currentPath = Astro.url.pathname.replace(/^\/(en|es)\//, '/').replace(/^\//, ''); 
+
+function getLangPath(targetLang: string) {
+    return getRelativeLocaleUrl(targetLang, currentPath);
+}
+---
+<div class="relative inline-block text-left lang-picker-container">
+  <button 
+    class="flex items-center gap-2 btn btn-ghost btn-sm px-3 hover:bg-base-200 transition-colors text-base-content/70 hover:text-base-content group lang-picker-button"
+    aria-label="Change language"
+    aria-expanded="false"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:text-primary transition-colors">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="2" y1="12" x2="22" y2="12"></line>
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+    </svg>
+    <span class="text-xs font-bold uppercase">{currentLang}</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-50 group-hover:opacity-100 transition-opacity">
+      <path d="m6 9 6 6 6-6"/>
+    </svg>
+  </button>
+
+  <div 
+    class="absolute right-0 top-full mt-2 w-36 bg-base-100/95 backdrop-blur-md border border-base-content/10 rounded-xl shadow-xl p-1 opacity-0 invisible translate-y-2 transition-all duration-200 z-50 transform origin-top-right lang-picker-dropdown"
+  >
+    {Object.entries(languages).map(([labelLang, label]) => (
+      <a
+        href={getLangPath(labelLang)}
+        class={`
+          flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all
+          ${(currentLang === labelLang) 
+            ? 'bg-primary/10 text-primary' 
+            : 'text-base-content/70 hover:bg-base-200 hover:text-base-content'}
+        `}
+      >
+        <span class={`w-1.5 h-1.5 rounded-full bg-primary transition-opacity ${currentLang === labelLang ? 'opacity-100' : 'opacity-0'}`}></span>
+        {label}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  const setupPickers = () => {
+    const containers = document.querySelectorAll('.lang-picker-container');
+    
+    containers.forEach(container => {
+      const btn = container.querySelector('.lang-picker-button') as HTMLElement;
+      const dropdown = container.querySelector('.lang-picker-dropdown') as HTMLElement;
+      
+      if (!btn || !dropdown) return;
+      
+      let isOpen = false;
+
+      function toggleMenu(forceClose = false) {
+        isOpen = forceClose ? false : !isOpen;
+        btn.setAttribute('aria-expanded', isOpen.toString());
+        if (isOpen) {
+          dropdown.classList.remove('invisible', 'opacity-0', 'translate-y-2');
+        } else {
+          dropdown.classList.add('invisible', 'opacity-0', 'translate-y-2');
+        }
+      }
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Close other open menus
+        document.querySelectorAll('.lang-picker-button[aria-expanded="true"]').forEach(otherBtn => {
+           if (otherBtn !== btn) (otherBtn as HTMLElement).click();
+        });
+        toggleMenu();
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', (e) => {
+        if (isOpen && !container.contains(e.target as Node)) {
+          toggleMenu(true);
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen) {
+          toggleMenu(true);
+          btn.focus();
+        }
+      });
+    });
+  };
+
+  // Run on initial load
+  setupPickers();
+  // Run on View Transitions
+  document.addEventListener('astro:page-load', setupPickers);
+</script>

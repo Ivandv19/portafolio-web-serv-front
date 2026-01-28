@@ -1,0 +1,95 @@
+---
+// src/components/Footer.astro
+import { useTranslations } from "../i18n/utils";
+
+const currentLang = Astro.currentLocale || 'es';
+const t = useTranslations(currentLang as 'es' | 'en');
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-neutral text-neutral-content pt-20 pb-10 px-4 lg:px-8 xl:px-20 rounded-t-[3rem] mt-20">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+    
+    <!-- Column 1: Brand & Social -->
+    <div class="space-y-6">
+      <h2 class="text-2xl md:text-3xl font-black tracking-tighter uppercase leading-tight">
+        {t('nav.logo.text')} <span class="text-primary">{t('nav.logo.highlight')}</span>
+      </h2>
+      <p class="text-sm opacity-70 leading-relaxed max-w-xs">
+        {t('footer.description')}
+      </p>
+      <div class="flex gap-4">
+        <a href="https://github.com/Ivandv19" target="_blank" class="hover:text-primary transition-colors" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/ivan-cruz-1906mx" target="_blank" class="hover:text-primary transition-colors" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <a href="https://wa.me/525667723938" target="_blank" class="hover:text-primary transition-colors" aria-label="WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        </a>
+        <a href="https://discord.com/users/ivandv19" target="_blank" class="hover:text-primary transition-colors" aria-label="Discord">
+           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8.5 14.5c.9 1.1 2 1.5 3.5 1.5s2.6-.4 3.5-1.5"></path><path d="M9 9h.01"></path><path d="M15 9h.01"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Column 2: Navigation -->
+    <div class="space-y-6">
+      <h3 class="text-xs font-black tracking-widest uppercase opacity-90">{t('footer.nav.title')}</h3>
+      <nav class="flex flex-col gap-3">
+        <a href="#servicios" class="text-sm opacity-60 hover:opacity-100 hover:text-primary transition-all">{t('nav.services')}</a>
+        <a href="#proyectos" class="text-sm opacity-60 hover:opacity-100 hover:text-primary transition-all">{t('nav.projects')}</a>
+        <a href="#testimonios" class="text-sm opacity-60 hover:opacity-100 hover:text-primary transition-all">{t('nav.testimonials')}</a>
+        <a href="#contacto" class="text-sm opacity-60 hover:opacity-100 hover:text-primary transition-all">{t('nav.contact')}</a>
+      </nav>
+    </div>
+
+    <!-- Column 3: Legal -->
+    <div class="space-y-6">
+      <h3 class="text-xs font-black tracking-widest uppercase opacity-90">{t('footer.legal.title')}</h3>
+      <nav class="flex flex-col gap-3">
+        <a href="#" class="text-sm opacity-60 hover:opacity-100 hover:text-primary transition-all">{t('footer.legal.terms')}</a>
+        <a href="#" class="text-sm opacity-60 hover:opacity-100 hover:text-primary transition-all">{t('footer.legal.privacy')}</a>
+      </nav>
+    </div>
+
+    <!-- Column 4: Newsletter -->
+    <div class="space-y-6">
+      <h3 class="text-xs font-black tracking-widest uppercase opacity-90">{t('footer.newsletter.title')}</h3>
+      <form class="space-y-3" onsubmit="event.preventDefault()">
+        <input 
+          type="email" 
+          placeholder={t('footer.newsletter.placeholder')}
+          class="w-full px-4 py-3 rounded-lg bg-neutral-focus border border-white/10 focus:border-primary outline-none transition-all text-sm"
+        />
+        <button class="w-full py-3 bg-primary hover:bg-primary/90 text-primary-content font-black rounded-lg transition-all text-sm uppercase tracking-wide shadow-lg active:scale-95">
+          {t('footer.newsletter.btn')}
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Bottom Part -->
+  <div class="border-t border-white/5 pt-10 flex flex-col items-center text-center space-y-6">
+    
+    <div class="space-y-2">
+      <p class="text-xs font-bold opacity-60 uppercase tracking-widest">
+        {t('footer.developed')} <span class="text-neutral-content">Sinx</span>
+      </p>
+      
+      <div class="flex flex-wrap justify-center gap-2">
+        <span class="px-3 py-1 rounded-full bg-neutral-focus text-[10px] font-bold border border-white/5">Astro</span>
+        <span class="px-3 py-1 rounded-full bg-neutral-focus text-[10px] font-bold border border-white/5">Vite</span>
+        <span class="px-3 py-1 rounded-full bg-neutral-focus text-[10px] font-bold border border-white/5">Tailwind</span>
+        <span class="px-3 py-1 rounded-full bg-neutral-focus text-[10px] font-bold border border-white/5">Cloudflare</span>
+      </div>
+    </div>
+
+    <p class="text-[10px] opacity-40 uppercase tracking-widest leading-loose">
+      {t('footer.rights')}
+    </p>
+    
+  </div>
+</footer>

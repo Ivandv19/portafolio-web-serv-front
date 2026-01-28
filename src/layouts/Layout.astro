@@ -6,6 +6,8 @@ import '@fontsource/outfit';
 import { useTranslations } from "../i18n/utils";
 import { ClientRouter } from "astro:transitions";
 import ThemeToggle from "../components/ThemeToggle.astro";
+import LanguagePicker from "../components/LanguagePicker.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   title: string;
@@ -106,24 +108,22 @@ const t = useTranslations(lang);
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
             </svg>
           </label>
-          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52 font-medium">
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow bg-base-200 rounded-box w-52 font-medium">
             <li><a href="#hero">{t('nav.home')}</a></li>
             <li><a href="#servicios">{t('nav.services')}</a></li>
             <li><a href="#proyectos">{t('nav.projects')}</a></li>
             <li><a href="#testimonios">{t('nav.testimonials')}</a></li>
             <li><a href="#sobre-mi">{t('nav.about')}</a></li>
-            <li>
-              <details>
-                <summary>Language: {lang.toUpperCase()}</summary>
-                <ul>
-                  <li><a href="/" class={lang === 'es' ? 'active' : ''}>Español</a></li>
-                  <li><a href="/en/" class={lang === 'en' ? 'active' : ''}>English</a></li>
-                </ul>
-              </details>
+            <div class="divider my-1 opacity-5"></div>
+            <li class="p-2">
+               <div class="flex items-center justify-between w-full">
+                  <span class="text-[10px] font-bold opacity-40 uppercase tracking-widest">{lang === 'es' ? 'Idioma' : 'Language'}</span>
+                  <LanguagePicker />
+               </div>
             </li>
-            <li class="mt-2 flex-row justify-between">
-                <a href="#contacto" class="btn btn-primary btn-sm text-white flex-1">{t('nav.contact')}</a>
-                <ThemeToggle />
+            <li class="p-2 flex flex-row gap-2 items-center">
+                <a href="#contacto" class="btn btn-primary btn-sm text-white grow h-10 min-h-0">{t('nav.contact')}</a>
+                <ThemeToggle class="bg-base-300/50" />
             </li>
           </ul>
         </div>
@@ -134,7 +134,7 @@ const t = useTranslations(lang);
       </div>
 
       <div class="navbar-end hidden xl:flex">
-        <ul class="menu menu-horizontal px-1 font-medium gap-2">
+        <ul class="menu menu-horizontal px-1 font-medium gap-2 flex-nowrap">
           <li><a href="#hero" class="hover:text-primary transition-colors">{t('nav.home')}</a></li>
           <li><a href="#servicios" class="hover:text-primary transition-colors">{t('nav.services')}</a></li>
           <li><a href="#proyectos" class="hover:text-primary transition-colors">{t('nav.projects')}</a></li>
@@ -150,62 +150,16 @@ const t = useTranslations(lang);
         <ThemeToggle class="ml-2" />
 
         <!-- Desktop Language Selector -->
-        <div class="dropdown dropdown-end ml-2">
-          <div tabindex="0" role="button" class="btn btn-ghost btn-sm gap-2">
-            {lang === 'es' ? 'Español' : 'English'}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="opacity-60"
-              ><path d="m6 9 6 6 6-6"></path></svg
-            >
-          </div>
-          <ul
-            tabindex="0"
-            class="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52"
-          >
-            <li><a href="/" class={lang === 'es' ? 'active' : ''}>Español</a></li>
-            <li><a href="/en/" class={lang === 'en' ? 'active' : ''}>English</a></li>
-          </ul>
-        </div>
+        <LanguagePicker />
       </div>
     </header>
 
-    <main class="flex-grow" transition:animate="fade">
+    <main class="grow" transition:animate="fade">
       <slot />
     </main>
 
   
-    <footer class="footer p-10 bg-neutral text-neutral-content footer-center rounded-t-[3rem] mt-20 flex flex-col md:grid">
-      
-    
-      <nav class="flex flex-wrap justify-center gap-4 text-sm opacity-80 font-medium md:grid-flow-col">
-        <a href="#hero" class="link link-hover">{t('nav.home')}</a>
-        <a href="#servicios" class="link link-hover">{t('nav.services')}</a>
-        <a href="#proyectos" class="link link-hover">{t('nav.projects')}</a>
-        <a href="#testimonios" class="link link-hover">{t('nav.testimonials')}</a>
-        <a href="#sobre-mi" class="link link-hover">{t('nav.about')}</a>
-        <a href="#contacto" class="link link-hover">{t('nav.contact')}</a>
-      </nav>
-      
-      <div class="divider divider-horizontal opacity-5 hidden md:flex"></div>
-      
-      <aside>
-        <p class="text-xs opacity-50">
-          <span set:html={t('footer.rights')} />
-        </p>
-        <div class="flex gap-4 mt-4 opacity-50 justify-center md:justify-start">
-          <span class="text-[10px] font-black tracking-widest uppercase">{t('footer.role')}</span>
-        </div>
-      </aside>
-    </footer>
+    <Footer />
 
     <script>
       const observerOptions = {

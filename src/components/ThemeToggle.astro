@@ -40,8 +40,8 @@ const { class: className } = Astro.props;
   </svg>
 </button>
 
-<script is:inline>
-  // Script inline para evitar problemas de hidratación de Astro/ViewTransitions
+<script>
+  // Script para manejar el cambio de tema
   function initThemeToggle() {
     const toggleBtns = document.querySelectorAll(".theme-toggle-btn");
     
@@ -71,7 +71,7 @@ const { class: className } = Astro.props;
     });
   }
 
-  // Ejecutar inmediatamente
+  // Ejecutar inicialmente
   initThemeToggle();
 
   // Re-ejecutar en navegación de Astro (View Transitions)
