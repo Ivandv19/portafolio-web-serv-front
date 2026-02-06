@@ -44,15 +44,8 @@ const t = useTranslations(lang);
         })();
     </script>
     
-    <!-- Google Analytics (GA4) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YLWS6TY5V"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-9YLWS6TY5V');
-    </script>
+    <!-- Umami Analytics -->
+    <script defer src="https://umami.fluxdv.icu/stats" data-website-id="e0be3719-9858-4b8a-8fbc-31b5d3e585dc"></script>
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
