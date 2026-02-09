@@ -1,21 +1,23 @@
 ---
-import { useTranslations } from '../i18n/utils';
+import { useTranslations } from "../i18n/utils";
 
 interface Props {
-  lang?: 'es' | 'en';
+  lang?: "es" | "en";
 }
 
-const { lang = 'es' } = Astro.props;
+const { lang = "es" } = Astro.props;
 const t = useTranslations(lang);
 ---
 
 <section id="servicios" class="py-24 px-4 lg:px-20 bg-base-100">
   <div class="max-w-4xl mx-auto text-center mb-16 animate-on-scroll">
-    <h2 class="text-4xl font-black mb-4 uppercase tracking-tight text-base-content">
-      {t('services.title')}
+    <h2
+      class="text-4xl font-black mb-4 uppercase tracking-tight text-base-content"
+    >
+      {t("services.title")}
     </h2>
     <p class="text-lg text-base-content/80">
-      {t('services.subtitle')}
+      {t("services.subtitle")}
     </p>
   </div>
 
@@ -25,9 +27,11 @@ const t = useTranslations(lang);
     >
       <div class="card-body">
         <div class="text-4xl mb-2">⚡</div>
-        <h3 class="card-title text-2xl font-bold text-base-content">{t('services.landing.title')}</h3>
+        <h3 class="card-title text-2xl font-bold text-base-content">
+          {t("services.landing.title")}
+        </h3>
         <p class="text-sm text-base-content/80 min-h-[60px]">
-          {t('services.landing.desc')}
+          {t("services.landing.desc")}
         </p>
       </div>
     </div>
@@ -37,9 +41,11 @@ const t = useTranslations(lang);
     >
       <div class="card-body">
         <div class="text-4xl mb-2">🎨</div>
-        <h3 class="card-title text-2xl font-bold">{t('services.portfolio.title')}</h3>
+        <h3 class="card-title text-2xl font-bold">
+          {t("services.portfolio.title")}
+        </h3>
         <p class="text-sm opacity-80 min-h-[60px]">
-          {t('services.portfolio.desc')}
+          {t("services.portfolio.desc")}
         </p>
       </div>
     </div>
@@ -49,9 +55,11 @@ const t = useTranslations(lang);
     >
       <div class="card-body">
         <div class="text-4xl mb-2">✍️</div>
-        <h3 class="card-title text-2xl font-bold">{t('services.blog.title')}</h3>
+        <h3 class="card-title text-2xl font-bold">
+          {t("services.blog.title")}
+        </h3>
         <p class="text-sm opacity-80 min-h-[60px]">
-          {t('services.blog.desc')}
+          {t("services.blog.desc")}
         </p>
       </div>
     </div>
@@ -68,12 +76,11 @@ const t = useTranslations(lang);
 
   <div class="mt-32">
     <div class="max-w-4xl mx-auto text-center mb-16">
-      
       <h2 class="text-3xl font-black mb-4 uppercase tracking-tight">
-        {t('services.infra.title')}
+        {t("services.infra.title")}
       </h2>
       <p class="text-lg opacity-70">
-        {t('services.infra.desc')}
+        {t("services.infra.desc")}
       </p>
     </div>
 
@@ -85,7 +92,7 @@ const t = useTranslations(lang);
         <div class="card-body">
           <div class="flex items-start justify-between mb-4">
             <h3 class="card-title text-2xl font-bold text-secondary">
-              {t('services.devops.title')}
+              {t("services.devops.title")}
             </h3>
             <div class="text-3xl group-hover:rotate-12 transition-transform">
               🛠️
@@ -93,41 +100,45 @@ const t = useTranslations(lang);
           </div>
 
           <p class="text-sm opacity-80 mt-4 mb-6 min-h-[80px]">
-            {t('services.devops.desc')}
+            {t("services.devops.desc")}
           </p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6">
             <div class="flex items-center gap-3 text-sm">
               <span class="text-secondary font-bold text-lg">✦</span>
-              <span>{t('services.devops.features.cicd')}</span>
+              <span>{t("services.devops.features.cicd")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-secondary font-bold text-lg">✦</span>
-              <span>{t('services.devops.features.iac')}</span>
+              <span>{t("services.devops.features.iac")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-secondary font-bold text-lg">✦</span>
-              <span>{t('services.devops.features.monitor')}</span>
+              <span>{t("services.devops.features.monitor")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-secondary font-bold text-lg">✦</span>
-              <span>{t('services.devops.features.sec')}</span>
+              <span>{t("services.devops.features.sec")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-secondary font-bold text-lg">✦</span>
-              <span>{t('services.devops.features.opt')}</span>
+              <span>{t("services.devops.features.opt")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-secondary font-bold text-lg">✦</span>
-              <span>{t('services.devops.features.agile')}</span>
+              <span>{t("services.devops.features.agile")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-secondary font-bold text-lg">✦</span>
-              <span>{t('services.devops.features.docker')}</span>
+              <span>{t("services.devops.features.docker")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-secondary font-bold text-lg">✦</span>
-              <span>{t('services.devops.features.pipe')}</span>
+              <span>{t("services.devops.features.pipe")}</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="text-secondary font-bold text-lg">✦</span>
+              <span>{t("services.devops.features.micro")}</span>
             </div>
           </div>
         </div>
@@ -140,55 +151,59 @@ const t = useTranslations(lang);
         <div class="card-body">
           <div class="flex items-start justify-between mb-4">
             <h3 class="card-title text-2xl font-bold text-primary">
-              {t('services.cloud.title')}
+              {t("services.cloud.title")}
             </h3>
             <div class="text-3xl group-hover:scale-110 transition-transform">
               ☁️
             </div>
           </div>
           <p class="text-sm opacity-80 mt-4 mb-6 min-h-[80px]">
-            {t('services.cloud.desc')}
+            {t("services.cloud.desc")}
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6">
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>{t('services.cloud.features.domain')}</span>
+              <span>{t("services.cloud.features.domain")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>{t('services.cloud.features.email')}</span>
+              <span>{t("services.cloud.features.email")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>{t('services.cloud.features.ssl')}</span>
+              <span>{t("services.cloud.features.ssl")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>{t('services.cloud.features.av')}</span>
+              <span>{t("services.cloud.features.av")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>{t('services.cloud.features.sec')}</span>
+              <span>{t("services.cloud.features.sec")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>{t('services.cloud.features.cdn')}</span>
+              <span>{t("services.cloud.features.cdn")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>{t('services.cloud.features.edge')}</span>
+              <span>{t("services.cloud.features.edge")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>{t('services.cloud.features.back')}</span>
+              <span>{t("services.cloud.features.back")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>{t('services.cloud.features.maint')}</span>
+              <span>{t("services.cloud.features.maint")}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>{t('services.cloud.features.mig')}</span>
+              <span>{t("services.cloud.features.mig")}</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="text-primary font-bold text-lg">✦</span>
+              <span>{t("services.cloud.features.self")}</span>
             </div>
           </div>
         </div>
@@ -199,6 +214,7 @@ const t = useTranslations(lang);
       class="mt-12 flex flex-wrap justify-center items-center gap-12 opacity-30 font-black text-2xl uppercase tracking-widest"
     >
       <span>Azure</span>
+      <span>OCI</span>
       <span>Vercel</span>
       <span>Netlify</span>
       <span>Cloudflare</span>
