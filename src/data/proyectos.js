@@ -10,7 +10,7 @@ export const proyectos = [
 		live: "https://landing-page.mgdc.site/",
 		repo: "https://github.com/Ivandv19/landing-page-1906",
 	},
-	
+
 	{
 		titulo: "Fluxdev Blog",
 		desc: {
@@ -19,7 +19,7 @@ export const proyectos = [
 		},
 		img: "https://portafolio-web-front.mgdc.site/fluxdev.png",
 		tags: ["Astro", "Cloudflare", "D1 (SQLite)", "TailwindCSS"],
-		live: "https://fluxdv.icu/",
+		live: "https://fluxdev.mgdc.site",
 		repo: "https://github.com/Ivandv19/blog-personal-fluxdev",
 	},
 ];
