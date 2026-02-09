@@ -30,7 +30,7 @@ const t = useTranslations(lang);
 
     <!-- Theme Persistence Script (Avoids Flash of Wrong Theme) -->
     <script is:inline>
-        (function() {
+        const applyTheme = () => {
             const savedTheme = localStorage.getItem("theme");
             const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "business" : "nord";
             const theme = savedTheme || systemTheme;
@@ -41,7 +41,13 @@ const t = useTranslations(lang);
             } else {
                 document.documentElement.classList.remove('dark');
             }
-        })();
+        };
+
+        // Apply immediately
+        applyTheme();
+
+        // Re-apply after Astro swaps the page (View Transitions)
+        document.addEventListener('astro:after-swap', applyTheme);
     </script>
     
     <!-- Umami Analytics -->
