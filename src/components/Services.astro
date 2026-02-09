@@ -78,84 +78,93 @@ const t = useTranslations(lang);
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      {/* DevOps Card */}
+      {/* 
       <div
         class="card bg-neutral text-neutral-content shadow-2xl border border-white/5 group"
       >
         <div class="card-body">
           <div class="flex items-start justify-between mb-4">
             <h3 class="card-title text-2xl font-bold text-secondary">
-              {t('services.managed.title')}
+              {t('services.devops.title')}
             </h3>
             <div class="text-3xl group-hover:rotate-12 transition-transform">
-              🚀
+              🛠️
             </div>
           </div>
 
-          <p class="text-sm opacity-80 my-4">
-            {t('services.managed.desc')}
+          <p class="text-sm opacity-80 mt-4 mb-6 min-h-[80px]">
+            {t('services.devops.desc')}
           </p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6">
-            <div class="flex items-center gap-3 text-sm">
-              <span class="text-secondary font-bold text-lg">✦</span>
-              <span>{t('services.features.domain')}</span>
-            </div>
-
-            <div class="flex items-center gap-3 text-sm">
-              <span class="text-secondary font-bold text-lg">✦</span>
-              <span>{t('services.features.email')}</span>
-            </div>
-
-            <div class="flex items-center gap-3 text-sm">
-              <span class="text-secondary font-bold text-lg">✦</span>
-              <span>{t('services.features.ssl')}</span>
-            </div>
-
-            <div class="flex items-center gap-3 text-sm">
-              <span class="text-secondary font-bold text-lg">✦</span>
-              <span>{t('services.features.speed')}</span>
-            </div>
-
-            <div class="flex items-center gap-3 text-sm">
-              <span class="text-secondary font-bold text-lg">✦</span>
-              <span>{t('services.features.protection')}</span>
-            </div>
-
-            <div class="flex items-center gap-3 text-sm">
-              <span class="text-secondary font-bold text-lg">✦</span>
-              <span>{t('services.features.maintenance')}</span>
-            </div>
+            {t('services.devops.tools').split(', ').map((tool) => (
+              <div class="flex items-center gap-3 text-sm">
+                <span class="text-secondary font-bold text-lg">✦</span>
+                <span>{tool}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
+      */}
 
+      {/* Cloud Card */}
       <div
         class="card bg-neutral text-neutral-content shadow-2xl border border-white/5 group"
       >
         <div class="card-body">
           <div class="flex items-start justify-between mb-4">
             <h3 class="card-title text-2xl font-bold text-primary">
-              {t('services.security.title')}
+              {t('services.cloud.title')}
             </h3>
             <div class="text-3xl group-hover:scale-110 transition-transform">
-              🛡️
+              ☁️
             </div>
           </div>
-          <p class="text-sm opacity-80 my-4">
-            {t('services.security.desc')}
+          <p class="text-sm opacity-80 mt-4 mb-6 min-h-[80px]">
+            {t('services.cloud.desc')}
           </p>
-          <div class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6">
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>{t('services.security.ddos')}</span>
+              <span>{t('services.cloud.features.domain')}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>{t('services.security.global')}</span>
+              <span>{t('services.cloud.features.email')}</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
               <span class="text-primary font-bold text-lg">✦</span>
-              <span>{t('services.security.images')}</span>
+              <span>{t('services.cloud.features.ssl')}</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="text-primary font-bold text-lg">✦</span>
+              <span>{t('services.cloud.features.av')}</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="text-primary font-bold text-lg">✦</span>
+              <span>{t('services.cloud.features.sec')}</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="text-primary font-bold text-lg">✦</span>
+              <span>{t('services.cloud.features.cdn')}</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="text-primary font-bold text-lg">✦</span>
+              <span>{t('services.cloud.features.edge')}</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="text-primary font-bold text-lg">✦</span>
+              <span>{t('services.cloud.features.back')}</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="text-primary font-bold text-lg">✦</span>
+              <span>{t('services.cloud.features.maint')}</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span class="text-primary font-bold text-lg">✦</span>
+              <span>{t('services.cloud.features.mig')}</span>
             </div>
           </div>
         </div>
@@ -165,10 +174,10 @@ const t = useTranslations(lang);
     <div
       class="mt-12 flex flex-wrap justify-center items-center gap-12 opacity-30 font-black text-2xl uppercase tracking-widest"
     >
+      <span>Azure</span>
       <span>Vercel</span>
       <span>Netlify</span>
       <span>Cloudflare</span>
-      <span>DNS</span>
     </div>
   </div>
 </section>
