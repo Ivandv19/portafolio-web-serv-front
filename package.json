@@ -9,7 +9,8 @@
 		"astro": "astro",
 		"lint": "biome lint .",
 		"format": "biome format . --write",
-		"check": "biome check . --write"
+		"check": "biome check . --write",
+		"test": "vitest run"
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^3.7.0",
@@ -26,6 +27,11 @@
 		"@biomejs/biome": "^2.4.0",
 		"@iconify/json": "^2.2.439",
 		"@iconify/tailwind4": "^1.2.1",
-		"daisyui": "^5.5.18"
+		"@testing-library/dom": "^10.4.1",
+		"@testing-library/jest-dom": "^6.9.1",
+		"@vitejs/plugin-react": "^5.1.4",
+		"daisyui": "^5.5.18",
+		"jsdom": "^28.1.0",
+		"vitest": "^4.0.18"
 	}
 }
