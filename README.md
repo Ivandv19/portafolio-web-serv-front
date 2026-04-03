@@ -1,76 +1,75 @@
-# Ivan Cruz - Frontend Portfolio
+# Portafolio Profesional (Servicios Web)
 
-![Status](https://img.shields.io/badge/Status-Active-success)
-![Astro](https://img.shields.io/badge/Astro-5.0-orange)
-![Tailwind](https://img.shields.io/badge/Tailwind-4.0-blue)
+## Descripción
 
-Portfolio personal moderno y de alto rendimiento construido con **Astro**, **React**, y **Tailwind CSS**. Diseñado para mostrar proyectos, habilidades y ofrecer servicios de desarrollo web e infraestructura cloud.
+Esta es la página pública y tarjeta de presentación digital enfocada a captar usuarios interesados en colaborar. El objetivo del sitio es detallar de forma clara los servicios de desarrollo brindados y permitir que clientes o reclutadores envíen mensajes de manera centralizada.
 
-## 🚀 Características
+## Características
 
-- **Stack Moderno**: Astro 5 + React para interactividad selectiva.
-- **Estilos**: Tailwind CSS v4 + DaisyUI para componentes elegantes.
-- **i18n**: Soporte completo para Inglés y Español con detección automática.
-- **Performance**: Optimización de imágenes (Cloudflare Images) y carga diferida.
-- **SEO**: Meta etiquetas dinámicas, sitemap XML y estructura semántica.
-- **Contacto**: Backend serverless integrado (Function) usando Resend.
-- **Animaciones**: Efectos "fade-in" suaves al hacer scroll.
+- **Diseño Directo**: Una página optimizada que concentra y muestra servicios, información del desarrollador, proyectos y testimonios.
+- **Multilingüe**: El sitio está diseñado para leerse fluidamente tanto en Español como en Inglés para no perder visibilidad internacional.
+- **Contacto Seguro**: Formulario integrado que previene al 100% mensajes de spam utilizando herramientas discretas como "Honeypot" y retos invisibles.
+- **Rápida Navegación**: Generado en formato estático, posibilitando una experiencia instantánea cada que alguien abre la página.
 
-## 🛠️ Tecnologías
+## Secciones
 
-- **Frontend Core**: [Astro](https://astro.build/)
-- **UI Components**: [React](https://reactjs.org/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) & [DaisyUI](https://daisyui.com/)
-- **Icons**: [Iconify](https://iconify.design/) & Lucide React
-- **Deployment**: Optimizado para Cloudflare Pages
-- **Forms**: API Route propia + [Resend](https://resend.com/) para emails
+1. **Introducción (Hero)**: La propuesta de valor de los desarrollos que se llevan a cabo para empresas.
+2. **Proyectos y Testimonios**: Espacio validado para demostrar visualmente los trabajos y sistemas grandes creados.
+3. **Apartado de Contacto**: Zona principal con un formulario de captura inteligente para recibir dudas y enviar mensajes directamente a una bandeja de correo electrónico dedicada.
 
-## 📦 Instalación
+## Uso
 
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/Ivandv19/portafolio-web-serv-front.git
-   ```
+- **Visualizar Contenido**: El proyecto web está completamente activo. Puedes explorarlo entrando aquí: [Portafolio Servicios](https://web-portfolio-f.mgdc.site/).
+- **Explorar Ofertas**: Navega descubriendo todo el abanico de servicios y alterna entre inglés/español usando el globo superior para mayor comodidad.
+- **Enviar un Mensaje**: ¿Quieres trabajar conmigo? Simplemente rellena cualquier formulario al final de la lectura e inmediatamente un correo oficial me será despachado.
 
-2. Instala las dependencias:
-   ```bash
-   pnpm install
-   ```
+## Tecnologías Utilizadas
 
-3. Configurar variables de entorno:
-   Crea un archivo `.env` en la raíz (si vas a probar el formulario localmente):
-   ```
-   RESEND_API_KEY=tu_api_key_aqui
-   ```
+- HTML / CSS / TypeScript
+- Astro 5
+- Tailwind CSS
+- DaisyUI
+- Hono
+- pnpm
 
-4. Inicia el servidor de desarrollo:
-   ```bash
-   pnpm dev
-   ```
+## Instalación
 
-## 🏗️ Build para Producción
-
-Para generar los archivos estáticos para despliegue:
+1. **Clonar el Repositorio**: Descarga este proyecto comercial directo en tu máquina a través de Git.
 
 ```bash
-pnpm build
+git clone https://github.com/Ivandv19/portafolio-web-serv-front.git
 ```
 
-El resultado estará en la carpeta `dist/`.
+2. **Instalar Dependencias**: Entra en tu terminal a la carpeta recién copiada y ejecuta:
 
-## 🌐 Estructura del Proyecto
-
-```text
-/src
-├── components/   # Componentes UI (Hero, Projects, etc.)
-├── layouts/      # Layout base (Head, Navbar, Footer)
-├── pages/        # Rutas y páginas (index.astro, 404.astro)
-├── i18n/         # Textos y traducciones
-├── data/         # Datos de proyectos
-└── styles/       # CSS global y configuración de Tailwind
-/functions        # Serverless functions para Cloudflare
+```bash
+pnpm install
 ```
 
-## 📄 Licencia
+3. **Variables Prácticas**: Necesitarás crear un entorno variables `.env` o `.dev.vars` colocando tus dos llaves de servicios: `RESEND_API_KEY` para poder mandar los correos, y `TURNSTILE_SECRET_KEY` para que el formulario se proteja del código malicioso de internet.
 
-Este proyecto está bajo la Licencia MIT.
+4. **Correr Localmente**: Levanta una sesión con vista en vivo usando el comando:
+
+```bash
+pnpm run dev
+```
+
+## Créditos
+
+Esta página es la plataforma central comercial del ecosistema.
+
+- Desarrollado por Ivan Cruz.
+
+## Despliegue
+
+La plataforma se construye y exporta mediante recursos de red ultrarrápidos y funciona gracias a pequeñas porciones de trabajo en el servidor enlazadas al ecosistema internacional de Cloudflare Pages. 
+
+Puedes revisarlo cuando gustes: [web-portfolio-f.mgdc.site](https://web-portfolio-f.mgdc.site/).
+
+## Licencia
+
+Licencia de Uso Personal:
+
+Este software es propiedad de **Ivan Cruz**. Se permite el uso de este software solo para fines personales y no comerciales. No se permite la distribución, modificación ni uso comercial de este software sin el consentimiento expreso de **Ivan Cruz**.
+
+Cualquier uso no autorizado puede resultar en acciones legales.
