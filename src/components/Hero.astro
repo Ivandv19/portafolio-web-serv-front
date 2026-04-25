@@ -1,5 +1,5 @@
 ---
-import { Github, Linkedin, ArrowUpRight, GraduationCap } from '@lucide/astro';
+
 
 import { getCloudflareImage } from '../utils/images.js';
 import { useTranslations } from '../i18n/utils';
@@ -66,8 +66,8 @@ const githubAvatar = 'https://avatars.githubusercontent.com/u/157653669';
           rel="noopener noreferrer"
           class="flex items-center gap-1 text-base-content hover:text-primary transition-colors"
         >
-          <Github size={18} /> Github <span class="font-medium"></span>{' '}
-          <ArrowUpRight size={16} />
+          <span class="icon-[mdi--github] text-[18px]"></span> Github <span class="font-medium"></span>{' '}
+          <span class="icon-[lucide--arrow-up-right] text-[16px]"></span>
         </a>
         <a
           href="https://www.linkedin.com/in/ivan-cruz-1906mx"
@@ -75,8 +75,8 @@ const githubAvatar = 'https://avatars.githubusercontent.com/u/157653669';
           rel="noopener noreferrer"
           class="flex items-center gap-1 text-base-content hover:text-primary transition-colors"
         >
-          <Linkedin size={18} /> Linkedin <span class="font-medium"></span>{' '}
-          <ArrowUpRight size={16} />
+          <span class="icon-[mdi--linkedin] text-[18px]"></span> Linkedin <span class="font-medium"></span>{' '}
+          <span class="icon-[lucide--arrow-up-right] text-[16px]"></span>
         </a>
 
         <a
@@ -85,9 +85,7 @@ const githubAvatar = 'https://avatars.githubusercontent.com/u/157653669';
           rel="noopener noreferrer"
           class="flex items-center gap-1 text-base-content hover:text-primary transition-colors"
         >
-          <span class="icon-[line-md--discord]"></span> Discord <ArrowUpRight
-            size={16}
-          />
+          <span class="icon-[line-md--discord]"></span> Discord <span class="icon-[lucide--arrow-up-right] text-[16px]"></span>
         </a>
 
         <a
@@ -97,7 +95,7 @@ const githubAvatar = 'https://avatars.githubusercontent.com/u/157653669';
           class="flex items-center gap-1 text-base-content hover:text-primary transition-colors"
         >
           <span class="font-bold text-lg">a</span>{' '}
-          <span class="font-medium"></span> Alura <ArrowUpRight size={16} />
+          <span class="font-medium"></span> Alura <span class="icon-[lucide--arrow-up-right] text-[16px]"></span>
         </a>
 
         <a
@@ -106,7 +104,7 @@ const githubAvatar = 'https://avatars.githubusercontent.com/u/157653669';
           rel="noopener noreferrer"
           class="flex items-center gap-1 text-base-content hover:text-primary transition-colors"
         >
-          <GraduationCap size={18} /> Codigo facilito <ArrowUpRight size={16} />
+          <span class="icon-[lucide--graduation-cap] text-[18px]"></span> Codigo facilito <span class="icon-[lucide--arrow-up-right] text-[16px]"></span>
         </a>
       </div>
     </div>
