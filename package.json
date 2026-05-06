@@ -16,15 +16,15 @@
 		"@astrojs/sitemap": "^3.7.2",
 		"@fontsource/outfit": "^5.2.8",
 		"@tailwindcss/vite": "^4.2.4",
-		"astro": "^6.2.1",
-		"hono": "^4.12.16",
-		"resend": "^6.12.2",
+		"astro": "^6.2.2",
+		"hono": "^4.12.18",
+		"resend": "^6.12.3",
 		"tailwindcss": "^4.2.4",
-		"zod": "^4.4.1"
+		"zod": "^4.4.3"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.4.13",
-		"@iconify/json": "^2.2.468",
+		"@biomejs/biome": "^2.4.14",
+		"@iconify/json": "^2.2.470",
 		"@iconify/tailwind4": "^1.2.3",
 		"@testing-library/dom": "^10.4.1",
 		"@testing-library/jest-dom": "^6.9.1",
