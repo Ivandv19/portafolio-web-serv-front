@@ -1,6 +1,4 @@
-import type { Project } from "../types";
-
-export const proyectos: Project[] = [
+export const proyectos = [
 	{
 		titulo: "Fluxbeats",
 		desc: {
