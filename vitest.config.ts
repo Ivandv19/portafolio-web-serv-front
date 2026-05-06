@@ -5,7 +5,7 @@ export default defineConfig({
     plugins: [
         {
             name: 'mock-markdown',
-            transform(code, id) {
+            transform(_code, id) {
                 if (id.endsWith('.md') || id.endsWith('.mdx')) {
                     return {
                         code: 'export default {}',

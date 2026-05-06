@@ -73,7 +73,7 @@ app.post("/send-email", async (c) => {
 			body: formData,
 		});
 
-		const verifyData: any = await verifyResponse.json();
+		const verifyData: { success: boolean } = await verifyResponse.json();
 		
 		if (!verifyData.success) {
 			return c.json(
