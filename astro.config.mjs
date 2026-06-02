@@ -6,7 +6,7 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://web-portfolio-f.mgdc.site",
+	site: "https://web-portfolio.mgdc.site",
 	prefetch: true,
 	output: "static",
 	integrations: [sitemap()],

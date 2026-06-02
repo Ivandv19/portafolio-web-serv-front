@@ -24,7 +24,7 @@ const app = new Hono<{ Bindings: Env }>().basePath("/api");
 app.use(
 	"/*",
 	cors({
-		origin: ["http://localhost:4321", "https://web-portfolio-f.mgdc.site"],
+		origin: ["http://localhost:4321", "https://web-portfolio.mgdc.site"],
 		credentials: true,
 	})
 );
