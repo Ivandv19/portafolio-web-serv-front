@@ -1,8 +1,8 @@
 import { Hono } from "hono";
-import { cors } from "hono/cors";
 import { handle } from "hono/cloudflare-pages";
 import { Resend } from "resend";
 import { z } from "zod";
+import { emailTemplateHtml } from "./email-template";
 
 // Schema de validación
 const contactSchema = z.object({
@@ -16,18 +16,11 @@ const contactSchema = z.object({
 type Env = {
 	RESEND_API_KEY: string;
 	TURNSTILE_SECRET_KEY: string;
+	FROM_EMAIL: string;
+	TO_EMAIL: string;
 };
 
 const app = new Hono<{ Bindings: Env }>().basePath("/api");
-
-// CORS
-app.use(
-	"/*",
-	cors({
-		origin: ["http://localhost:4321", "https://web-portfolio.mgdc.site"],
-		credentials: true,
-	})
-);
 
 // Endpoint de contacto
 app.post("/send-email", async (c) => {
@@ -44,11 +37,11 @@ app.post("/send-email", async (c) => {
 		}).safeParse(body);
 
 		if (!result.success) {
+			const messages = result.error.issues.map(i => i.message).join(", ");
 			return c.json(
 				{
 					success: false,
-					error: "Datos inválidos",
-					details: result.error.issues,
+					error: messages,
 				},
 				400
 			);
@@ -94,51 +87,11 @@ app.post("/send-email", async (c) => {
 
 		// Enviar email
 		const { data, error } = await resend.emails.send({
-			from: "Portafolio <onboarding@resend.dev>",
-			to: "ivangtx19@gmail.com",
+			from: c.env.FROM_EMAIL,
+			to: c.env.TO_EMAIL,
 			replyTo: email,
 			subject: `Nuevo Lead: ${nombre} - ${servicio}`,
-			html: `
-				<!DOCTYPE html>
-				<html>
-					<head>
-						<style>
-							body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-							.container { max-width: 600px; margin: 0 auto; padding: 20px; }
-							.header { background: #1a1a1a; color: white; padding: 20px; border-radius: 8px 8px 0 0; }
-							.content { background: #f9fafb; padding: 30px; border-radius: 0 0 8px 8px; border: 1px solid #e5e7eb; }
-							.field { margin-bottom: 20px; }
-							.label { font-weight: bold; color: #4b5563; margin-bottom: 5px; }
-							.value { background: white; padding: 10px; border-radius: 4px; border-left: 3px solid #000; }
-						</style>
-					</head>
-					<body>
-						<div class="container">
-							<div class="header">
-								<h2 style="margin: 0;">🚀 Nuevo Mensaje de Contacto</h2>
-							</div>
-							<div class="content">
-								<div class="field">
-									<div class="label">👤 Nombre:</div>
-									<div class="value">${nombre}</div>
-								</div>
-								<div class="field">
-									<div class="label">📧 Email:</div>
-									<div class="value"><a href="mailto:${email}">${email}</a></div>
-								</div>
-								<div class="field">
-									<div class="label">🎯 Interés:</div>
-									<div class="value">${servicio}</div>
-								</div>
-								<div class="field">
-									<div class="label">💬 Mensaje:</div>
-									<div class="value">${mensaje.replace(/\n/g, "<br>")}</div>
-								</div>
-							</div>
-						</div>
-					</body>
-				</html>
-			`,
+			html: emailTemplateHtml(nombre, email, servicio, mensaje),
 		});
 
 		if (error) {

@@ -9,24 +9,26 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Ivan Cruz | Frontend Developer & Hosting" lang="es">
-	<Hero lang="es" />
-	<Services lang="es" />
-	<Projects lang="es" />
-	<Testimonios lang="es" />
-	<About lang="es" />
-	<Contact lang="es" />
+	<Hero />
+	<Services />
+	<Projects />
+	<Testimonios />
+	<About />
+	<Contact />
 </Layout>
 
 <script>
-  const browserLang = navigator.language?.split('-')[0];
-  const storedLang = sessionStorage.getItem('preferred_lang');
+  import { preferencesStore } from "../store/preferences";
 
-  if (!storedLang) {
-    if (browserLang === 'en') {
-       sessionStorage.setItem('preferred_lang', 'en');
-       window.location.href = '/en/';
-    } else {
-       sessionStorage.setItem('preferred_lang', 'es');
-    }
+  const { lang } = preferencesStore.getState();
+  const browserLang = navigator.language?.split('-')[0];
+
+  // Si el usuario prefiere inglés, redirigir
+  if (lang === 'en') {
+    window.location.href = '/en/';
+  } else if (browserLang === 'en') {
+    // Primera visita y navegador en inglés
+    preferencesStore.getState().setLang('en');
+    window.location.href = '/en/';
   }
 </script>

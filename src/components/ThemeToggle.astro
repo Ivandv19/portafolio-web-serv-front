@@ -41,39 +41,22 @@ const { class: className } = Astro.props;
 </button>
 
 <script>
-  // Script para manejar el cambio de tema
+  import { preferencesStore } from "../store/preferences";
+
   function initThemeToggle() {
     const toggleBtns = document.querySelectorAll(".theme-toggle-btn");
     
     toggleBtns.forEach(btn => {
-      // Evitar múltiples listeners
       if (btn.hasAttribute('data-init')) return;
       
       btn.addEventListener("click", () => {
-        const element = document.documentElement;
-        // Leer tema actual directamente del atributo o localStorage
-        const currentTheme = element.getAttribute("data-theme");
-        const newTheme = currentTheme === "business" ? "nord" : "business";
-        
-        // Aplicar nuevo tema
-        element.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme);
-        
-        // Sincronizar clase 'dark' para Tailwind
-        if (newTheme === 'business') {
-            element.classList.add('dark');
-        } else {
-            element.classList.remove('dark');
-        }
+        preferencesStore.getState().toggleTheme();
       });
       
       btn.setAttribute('data-init', 'true');
     });
   }
 
-  // Ejecutar inicialmente
   initThemeToggle();
-
-  // Re-ejecutar en navegación de Astro (View Transitions)
   document.addEventListener('astro:page-load', initThemeToggle);
 </script>

@@ -1,20 +1,14 @@
 ---
-
-
 import { getCloudflareImage } from '../utils/images.js';
 import { useTranslations } from '../i18n/utils';
 
-interface Props {
-  lang?: 'es' | 'en';
-}
-
-const { lang = 'es' } = Astro.props;
-const t = useTranslations(lang);
+const currentLang = (Astro.currentLocale || 'es') as 'es' | 'en';
+const t = useTranslations(currentLang);
 
 const githubAvatar = 'https://avatars.githubusercontent.com/u/157653669';
 ---
 
-<section id="hero " class="hero min-h-[90vh] bg-base-200">
+<section id="hero" class="hero min-h-[90vh] bg-base-200">
   <div class="hero-content flex-col lg:flex-row-reverse gap-12 px-4 lg:px-20">
     <div class="relative group animate-on-scroll">
       <div

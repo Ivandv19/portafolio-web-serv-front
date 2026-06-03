@@ -49,14 +49,28 @@ function getLangPath(targetLang: string) {
 </div>
 
 <script>
+  import { preferencesStore } from "../store/preferences";
+
   const setupPickers = () => {
     const containers = document.querySelectorAll('.lang-picker-container');
     
     containers.forEach(container => {
       const btn = container.querySelector('.lang-picker-button') as HTMLElement;
       const dropdown = container.querySelector('.lang-picker-dropdown') as HTMLElement;
+      const links = container.querySelectorAll('a[href]');
       
       if (!btn || !dropdown) return;
+
+      // Save lang preference on link click
+      links.forEach(link => {
+        if (link.hasAttribute('data-init')) return;
+        link.addEventListener('click', () => {
+          const href = link.getAttribute('href') || '';
+          const targetLang = href.startsWith('/en') ? 'en' : 'es';
+          preferencesStore.getState().setLang(targetLang as 'es' | 'en');
+        });
+        link.setAttribute('data-init', 'true');
+      });
       
       let isOpen = false;
 
@@ -72,21 +86,18 @@ function getLangPath(targetLang: string) {
 
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
-        // Close other open menus
         document.querySelectorAll('.lang-picker-button[aria-expanded="true"]').forEach(otherBtn => {
            if (otherBtn !== btn) (otherBtn as HTMLElement).click();
         });
         toggleMenu();
       });
 
-      // Close when clicking outside
       document.addEventListener('click', (e) => {
         if (isOpen && !container.contains(e.target as Node)) {
           toggleMenu(true);
         }
       });
 
-      // Close on Escape key
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && isOpen) {
           toggleMenu(true);
@@ -96,8 +107,6 @@ function getLangPath(targetLang: string) {
     });
   };
 
-  // Run on initial load
   setupPickers();
-  // Run on View Transitions
   document.addEventListener('astro:page-load', setupPickers);
 </script>

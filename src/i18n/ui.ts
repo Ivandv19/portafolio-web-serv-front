@@ -92,6 +92,7 @@ export const ui = {
     'contact.form.message.placeholder': 'Detalles del proyecto, stack, presupuesto aproximado...',
     'contact.form.submit': 'Enviar Mensaje',
     'contact.form.sending': 'Enviando...',
+    'contact.form.error': 'Error al enviar el mensaje. Intenta de nuevo.',
     'contact.form.success': '¡Mensaje enviado con éxito! Te responderé pronto.',
     'footer.rights': '© 2026 Flux por Ivan Cruz. Todos los derechos reservados.',
     'footer.role': 'Fullstack Infrastructure',

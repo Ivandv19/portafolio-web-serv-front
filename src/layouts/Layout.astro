@@ -47,24 +47,26 @@ const t = useTranslations(lang);
 
     <!-- Theme Persistence Script (Avoids Flash of Wrong Theme) -->
     <script is:inline>
-        const applyTheme = () => {
-            const savedTheme = localStorage.getItem("theme");
-            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "business" : "nord";
-            const theme = savedTheme || systemTheme;
-            
-            document.documentElement.setAttribute("data-theme", theme);
-            if (theme === 'business') {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        };
+        (function() {
+            try {
+                var saved = JSON.parse(localStorage.getItem("preferences") || "{}");
+                var theme = (saved && saved.state && saved.state.theme) ||
+                    (window.matchMedia("(prefers-color-scheme: dark)").matches ? "business" : "nord");
+                document.documentElement.setAttribute("data-theme", theme);
+                if (theme === 'business') document.documentElement.classList.add('dark');
+            } catch(e) {}
+        })();
 
-        // Apply immediately
-        applyTheme();
-
-        // Re-apply after Astro swaps the page (View Transitions)
-        document.addEventListener('astro:after-swap', applyTheme);
+        document.addEventListener("astro:after-swap", function() {
+            try {
+                var saved = JSON.parse(localStorage.getItem("preferences") || "{}");
+                var theme = (saved && saved.state && saved.state.theme) ||
+                    (window.matchMedia("(prefers-color-scheme: dark)").matches ? "business" : "nord");
+                document.documentElement.setAttribute("data-theme", theme);
+                if (theme === 'business') document.documentElement.classList.add('dark');
+                else document.documentElement.classList.remove('dark');
+            } catch(e) {}
+        });
     </script>
     
     <!-- Umami Analytics -->
