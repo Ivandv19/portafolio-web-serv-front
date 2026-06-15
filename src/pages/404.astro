@@ -1,17 +1,19 @@
 ---
+// Layout
 import Layout from "../layouts/Layout.astro";
+// i18n
 import { useTranslations } from "../i18n/utils";
 
-// Por defecto usamos español para el 404 estático
-// Si el usuario tenía preferencia en inglés, podríamos intentar manejarlo con JS cliente,
-// pero un 404 limpio en español / inglés visual es suficiente.
+// Muestra siempre el 404 en español
+// El script cliente ajusta a inglés si detecta navegador en inglés
 const t = useTranslations('es');
 ---
 
+{/* Página 404 — no encontrada */}
 <Layout title="404 - Página no encontrada" lang="es">
   <div class="hero min-h-[80vh] flex items-center justify-center text-center px-4">
     <div class="max-w-md">
-      <!-- Icono animado o ilustrativo -->
+      <!-- Icono animado -->
       <div class="mb-8 flex justify-center">
         <div class="relative">
           <div class="absolute -inset-4 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
@@ -35,13 +37,13 @@ const t = useTranslations('es');
       </div>
 
       <h1 class="text-7xl font-black mb-4">404</h1>
-      
+
       <h2 id="title404" class="text-2xl font-bold mb-4">{t('404.title')}</h2>
-      
+
       <p id="desc404" class="py-6 text-lg opacity-70">
         {t('404.desc')}
       </p>
-      
+
       <a id="btn404" href="/" class="btn btn-primary text-white btn-wide">
         {t('404.button')}
       </a>
@@ -50,8 +52,8 @@ const t = useTranslations('es');
 </Layout>
 
 <script>
-  // Pequeño script para comprobar si el usuario habla inglés y ajustar el texto al vuelo
-  // Esto es opcional, pero le da un toque premium.
+  // 1. Detecta el idioma del usuario (sessionStorage > navegador)
+  // 2. Si es inglés, reemplaza textos del 404 y redirige al home en inglés
   import { ui } from '../i18n/ui';
 
   const storedLang = sessionStorage.getItem('preferred_lang');
@@ -67,7 +69,7 @@ const t = useTranslations('es');
     if (desc) desc.innerText = ui.en['404.desc'];
     if (btn) {
       btn.innerText = ui.en['404.button'];
-      btn.setAttribute('href', '/en/'); // Redirigir al home en inglés
+      btn.setAttribute('href', '/en/');
     }
   }
 </script>

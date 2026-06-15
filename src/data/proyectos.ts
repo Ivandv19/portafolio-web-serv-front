@@ -1,6 +1,9 @@
+// Tipos
 import type { Project } from "../types";
 
+// Proyectos destacados del portafolio
 export const proyectos: Project[] = [
+	// Fluxbeats — plataforma de beats musicales
 	{
 		titulo: "Fluxbeats",
 		desc: {
@@ -13,6 +16,7 @@ export const proyectos: Project[] = [
 		repo: "https://github.com/Ivandv19/landing-page-1906",
 	},
 
+	// Fluxdev Blog — blog personal con Astro + D1
 	{
 		titulo: "Fluxdev Blog",
 		desc: {

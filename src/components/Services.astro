@@ -1,10 +1,12 @@
 ---
+// i18n
 import { useTranslations } from "../i18n/utils";
 
 const currentLang = (Astro.currentLocale || 'es') as 'es' | 'en';
 const t = useTranslations(currentLang);
 ---
 
+{/* Sección Servicios — soluciones web y cloud */}
 <section id="servicios" class="py-24 px-4 lg:px-20 bg-base-100">
   <div class="max-w-4xl mx-auto text-center mb-16 animate-on-scroll">
     <h2
@@ -17,6 +19,7 @@ const t = useTranslations(currentLang);
     </p>
   </div>
 
+  {/* Tarjetas de servicios principales */}
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
     <div
       class="card bg-base-200 shadow-xl border-t-4 border-primary hover:scale-[1.02] transition-transform duration-300 animate-on-scroll"
@@ -61,6 +64,7 @@ const t = useTranslations(currentLang);
     </div>
   </div>
 
+  {/* Badges del stack */}
   <div
     class="mt-12 flex flex-wrap justify-center items-center gap-12 opacity-30 font-black text-2xl uppercase tracking-widest"
   >
@@ -70,6 +74,7 @@ const t = useTranslations(currentLang);
     <span>TypeScript</span>
   </div>
 
+  {/* Sección de infraestructura */}
   <div class="mt-32">
     <div class="max-w-4xl mx-auto text-center mb-16">
       <h2 class="text-3xl font-black mb-4 uppercase tracking-tight">
@@ -81,7 +86,7 @@ const t = useTranslations(currentLang);
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-      {/* DevOps Card */}
+      {/* Tarjeta DevOps */}
       <div
         class="card bg-neutral text-neutral-content shadow-2xl border border-white/5 group animate-on-scroll"
       >
@@ -140,7 +145,7 @@ const t = useTranslations(currentLang);
         </div>
       </div>
 
-      {/* Cloud Card */}
+      {/* Tarjeta Cloud */}
       <div
         class="card bg-neutral text-neutral-content shadow-2xl border border-white/5 group"
       >
@@ -206,6 +211,7 @@ const t = useTranslations(currentLang);
       </div>
     </div>
 
+    {/* Plataformas cloud soportadas */}
     <div
       class="mt-12 flex flex-wrap justify-center items-center gap-12 opacity-30 font-black text-2xl uppercase tracking-widest"
     >

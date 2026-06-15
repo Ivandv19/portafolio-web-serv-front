@@ -1,105 +1,101 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-  themes: nord, business;
+	themes: nord, business;
 }
 
 @plugin "@iconify/tailwind4";
 
-/*
-  Centralized Style System
-  Aligned with Blog & Pomodoro patterns.
-*/
+/* ─── Design Tokens ─── */
 
 @theme {
-  /* Brand Colors matches DaisyUI */
-  --color-primary: var(--color-primary);
-  --color-secondary: var(--color-secondary);
-  --color-accent: var(--color-accent);
+	/* Colores base (heredan de DaisyUI) */
+	--color-primary: var(--color-primary);
+	--color-secondary: var(--color-secondary);
+	--color-accent: var(--color-accent);
 
-  /* Global Fonts */
-  --font-outfit: 'Outfit', sans-serif;
+	/* Fuente principal */
+	--font-outfit: 'Outfit', sans-serif;
 }
 
-:root {
-  /* Define defaults if necessary, but DaisyUI handles this */
-}
+/* ─── Estilos Base ─── */
 
-/* Base Styles */
 body {
-  /* Use DaisyUI standard variables */
-  background-color: var(--fallback-b1, oklch(var(--b1)/1));
-  color: var(--fallback-bc, oklch(var(--bc)/1));
-  font-family: var(--font-outfit);
+	background-color: var(--fallback-b1, oklch(var(--b1)/1));
+	color: var(--fallback-bc, oklch(var(--bc)/1));
+	font-family: var(--font-outfit);
 
-  /* Smooth transition */
-  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+	/* Transición suave entre temas */
+	transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
-/* Headings use System Font (User preference) */
+/* ─── Tipografía ─── */
+
+/* Headings con fuente del sistema (preferencia del usuario) */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-/* ANIMATIONS */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+/* ─── Animaciones ─── */
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .animate-on-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .animate-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+	opacity: 1;
+	transform: translateY(0);
 }
 
 .animate-fade-in-up {
-  opacity: 0;
-  /* Initial state */
-  animation: fadeInUp 0.6s ease-out forwards;
+	opacity: 0;
+	animation: fadeInUp 0.6s ease-out forwards;
 }
 
-/* Stagger delays for premium feel */
+/* Retrasos escalonados para efecto premium */
 .animate-delay-100 {
-  animation-delay: 100ms;
+	animation-delay: 100ms;
 }
 
 .animate-delay-200 {
-  animation-delay: 200ms;
+	animation-delay: 200ms;
 }
 
 .animate-delay-300 {
-  animation-delay: 300ms;
+	animation-delay: 300ms;
 }
 
 .animate-delay-500 {
-  animation-delay: 500ms;
+	animation-delay: 500ms;
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* ─── Accesibilidad ─── */
 
-  .animate-on-scroll,
-  .animate-fade-in-up {
-    opacity: 1;
-    transform: none;
-    transition: none;
-    animation: none;
-  }
+@media (prefers-reduced-motion: reduce) {
+	.animate-on-scroll,
+	.animate-fade-in-up {
+		opacity: 1;
+		transform: none;
+		transition: none;
+		animation: none;
+	}
 }

@@ -1,3 +1,4 @@
+// Traducciones español (es) e inglés (en) — claves planas agrupadas por sección
 export const languages = {
   es: 'Español',
   en: 'English',

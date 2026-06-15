@@ -1,4 +1,5 @@
 ---
+// Componentes
 import About from "../components/About.astro";
 import Contact from "../components/Contact.astro";
 import Hero from "../components/Hero.astro";
@@ -8,6 +9,7 @@ import Testimonios from "../components/Testimonios.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
+{/* Página de inicio (es) — landing principal */}
 <Layout title="Ivan Cruz | Frontend Developer & Hosting" lang="es">
 	<Hero />
 	<Services />
@@ -18,16 +20,18 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <script>
+  // Store
   import { preferencesStore } from "../store/preferences";
 
+  // 1. Obtiene la preferencia de idioma guardada
   const { lang } = preferencesStore.getState();
   const browserLang = navigator.language?.split('-')[0];
 
-  // Si el usuario prefiere inglés, redirigir
+  // 2a. Prefiere inglés guardado — redirige
   if (lang === 'en') {
     window.location.href = '/en/';
   } else if (browserLang === 'en') {
-    // Primera visita y navegador en inglés
+    // 2b. Primera visita y navegador en inglés — guarda y redirige
     preferencesStore.getState().setLang('en');
     window.location.href = '/en/';
   }

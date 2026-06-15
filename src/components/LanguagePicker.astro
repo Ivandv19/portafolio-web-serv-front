@@ -1,16 +1,17 @@
 ---
-// src/components/LanguagePicker.astro
+// i18n
 import { languages } from "../i18n/ui";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
 const currentLang = Astro.currentLocale || 'es';
-// Detect if we are in a subpath like /en/some-page
-const currentPath = Astro.url.pathname.replace(/^\/(en|es)\//, '/').replace(/^\//, ''); 
+// Limpia la ruta actual para construir URLs relativas por idioma
+const currentPath = Astro.url.pathname.replace(/^\/(en|es)\//, '/').replace(/^\//, '');
 
 function getLangPath(targetLang: string) {
     return getRelativeLocaleUrl(targetLang, currentPath);
 }
 ---
+{/* Selector de idioma (es/en) con menú desplegable */}
 <div class="relative inline-block text-left lang-picker-container">
   <button 
     class="flex items-center gap-2 btn btn-ghost btn-sm px-3 hover:bg-base-200 transition-colors text-base-content/70 hover:text-base-content group lang-picker-button"
@@ -51,6 +52,7 @@ function getLangPath(targetLang: string) {
 <script>
   import { preferencesStore } from "../store/preferences";
 
+  // Inicializa el comportamiento del dropdown de idioma
   const setupPickers = () => {
     const containers = document.querySelectorAll('.lang-picker-container');
     
@@ -61,7 +63,7 @@ function getLangPath(targetLang: string) {
       
       if (!btn || !dropdown) return;
 
-      // Save lang preference on link click
+      // Guarda la preferencia de idioma al hacer clic
       links.forEach(link => {
         if (link.hasAttribute('data-init')) return;
         link.addEventListener('click', () => {
@@ -74,6 +76,7 @@ function getLangPath(targetLang: string) {
       
       let isOpen = false;
 
+      // Abre o cierra el menú desplegable
       function toggleMenu(forceClose = false) {
         isOpen = forceClose ? false : !isOpen;
         btn.setAttribute('aria-expanded', isOpen.toString());
@@ -84,6 +87,7 @@ function getLangPath(targetLang: string) {
         }
       }
 
+      // 1. Click en botón — alterna el menú
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         document.querySelectorAll('.lang-picker-button[aria-expanded="true"]').forEach(otherBtn => {
@@ -92,12 +96,14 @@ function getLangPath(targetLang: string) {
         toggleMenu();
       });
 
+      // 2. Click fuera — cierra el menú
       document.addEventListener('click', (e) => {
         if (isOpen && !container.contains(e.target as Node)) {
           toggleMenu(true);
         }
       });
 
+      // 3. Tecla Escape — cierra el menú
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && isOpen) {
           toggleMenu(true);

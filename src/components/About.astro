@@ -1,10 +1,12 @@
 ---
+// i18n
 import { useTranslations } from '../i18n/utils';
 
 const currentLang = (Astro.currentLocale || 'es') as 'es' | 'en';
 const t = useTranslations(currentLang);
 ---
 
+{/* Sección Sobre Mí — trayectoria y educación */}
 <section id="sobre-mi" class="py-24 px-4 lg:px-20 bg-base-200/50">
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start animate-on-scroll">
     <div>
@@ -18,6 +20,7 @@ const t = useTranslations(currentLang);
         </p>
       </div>
 
+      {/* Estadísticas rápidas */}
       <div class="flex gap-8 mt-10">
         <div>
           <div class="text-3xl font-bold text-primary">+20</div>
@@ -49,6 +52,7 @@ const t = useTranslations(currentLang);
         {t('about.education.title')}
       </h3>
 
+      {/* Línea de tiempo de formación */}
       <ul
         class="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact"
       >

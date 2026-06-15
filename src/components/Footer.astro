@@ -1,4 +1,5 @@
 ---
+// i18n
 import { useTranslations } from "../i18n/utils";
 
 const currentLang = (Astro.currentLocale || 'es') as 'es' | 'en';
@@ -9,7 +10,7 @@ const year = new Date().getFullYear();
 <footer class="bg-neutral text-neutral-content pt-20 pb-10 px-4 lg:px-8 xl:px-20 rounded-t-[3rem] mt-20">
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
     
-    <!-- Column 1: Brand & Social -->
+    <!-- Columna 1: Marca y Redes -->
     <div class="space-y-6">
       <h2 class="text-2xl md:text-3xl font-black tracking-tighter uppercase leading-tight">
         {t('nav.logo.text')} <span class="text-primary">{t('nav.logo.highlight')}</span>
@@ -33,7 +34,7 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
-    <!-- Column 2: Navigation -->
+    <!-- Columna 2: Navegación -->
     <div class="space-y-6">
       <h3 class="text-xs font-black tracking-widest uppercase opacity-90">{t('footer.nav.title')}</h3>
       <nav class="flex flex-col gap-3">
@@ -44,7 +45,7 @@ const year = new Date().getFullYear();
       </nav>
     </div>
 
-    <!-- Column 3: Legal -->
+    <!-- Columna 3: Legal -->
     <div class="space-y-6">
       <h3 class="text-xs font-black tracking-widest uppercase opacity-90">{t('footer.legal.title')}</h3>
       <nav class="flex flex-col gap-3">
@@ -53,7 +54,7 @@ const year = new Date().getFullYear();
       </nav>
     </div>
 
-    <!-- Column 4: Newsletter -->
+    <!-- Columna 4: Newsletter -->
     <div class="space-y-6">
       <h3 class="text-xs font-black tracking-widest uppercase opacity-90">{t('footer.newsletter.title')}</h3>
       <form class="space-y-3" onsubmit="event.preventDefault()">
@@ -70,7 +71,7 @@ const year = new Date().getFullYear();
 
   </div>
 
-  <!-- Bottom Part -->
+  {/* Barra inferior con créditos */}
   <div class="border-t border-white/5 pt-10 flex flex-col items-center text-center space-y-6">
     
     <div class="space-y-2">
@@ -78,6 +79,7 @@ const year = new Date().getFullYear();
         {t('footer.developed')} <span class="text-neutral-content">Sinx</span>
       </p>
       
+      {/* Badges del stack tecnológico */}
       <div class="flex flex-wrap justify-center gap-2">
         <span class="px-3 py-1 rounded-full bg-neutral-focus text-[10px] font-bold border border-white/5">Astro</span>
         <span class="px-3 py-1 rounded-full bg-neutral-focus text-[10px] font-bold border border-white/5">Vite</span>

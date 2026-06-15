@@ -1,0 +1,6 @@
+{
+	"name": "portafolio-web-serv-front",
+	"pages_build_output_dir": "dist",
+	"compatibility_date": "2026-04-30",
+	"compatibility_flags": ["nodejs_compat"]
+}

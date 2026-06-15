@@ -2,8 +2,9 @@
 const { class: className } = Astro.props;
 ---
 
+{/* Botón de cambio de tema (claro/oscuro) */}
 <button class:list={["theme-toggle-btn btn btn-ghost btn-circle btn-sm", className]} aria-label="Toggle Theme">
-  <!-- Sun Icon (for light mode) -->
+  {/* Icono de sol (modo claro) */}
   <svg
     class="sun-icon w-5 h-5 hidden dark:block"
     xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +26,7 @@ const { class: className } = Astro.props;
     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
   </svg>
 
-  <!-- Moon Icon (for dark mode) -->
+  {/* Icono de luna (modo oscuro) */}
   <svg
     class="moon-icon w-5 h-5 block dark:hidden"
     xmlns="http://www.w3.org/2000/svg"
@@ -43,12 +44,14 @@ const { class: className } = Astro.props;
 <script>
   import { preferencesStore } from "../store/preferences";
 
+  // Inicializa los botones de cambio de tema
   function initThemeToggle() {
     const toggleBtns = document.querySelectorAll(".theme-toggle-btn");
     
     toggleBtns.forEach(btn => {
       if (btn.hasAttribute('data-init')) return;
       
+      // 1. Asigna el evento de clic
       btn.addEventListener("click", () => {
         preferencesStore.getState().toggleTheme();
       });
@@ -57,6 +60,7 @@ const { class: className } = Astro.props;
     });
   }
 
+  // 2. Ejecuta en carga inicial y en navegación con Astro
   initThemeToggle();
   document.addEventListener('astro:page-load', initThemeToggle);
 </script>

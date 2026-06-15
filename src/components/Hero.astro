@@ -1,5 +1,7 @@
 ---
+// Utilerías
 import { getCloudflareImage } from '../utils/images.js';
+// i18n
 import { useTranslations } from '../i18n/utils';
 
 const currentLang = (Astro.currentLocale || 'es') as 'es' | 'en';
@@ -8,8 +10,10 @@ const t = useTranslations(currentLang);
 const githubAvatar = 'https://avatars.githubusercontent.com/u/157653669';
 ---
 
+{/* Sección Hero — presentación principal */}
 <section id="hero" class="hero min-h-[90vh] bg-base-200">
   <div class="hero-content flex-col lg:flex-row-reverse gap-12 px-4 lg:px-20">
+    {/* Avatar con glow animado */}
     <div class="relative group animate-on-scroll">
       <div
         class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000"
@@ -50,7 +54,7 @@ const githubAvatar = 'https://avatars.githubusercontent.com/u/157653669';
         <a href="#proyectos" class="btn btn-primary">{t('hero.cta')}</a>
       </div>
 
-      {/* 3. LINKS REDES SOCIALES */}
+      {/* Redes sociales */}
       <div
         class="flex flex-wrap items-center justify-center gap-6 md:gap-8 mb-12 text-sm md:text-base"
       >

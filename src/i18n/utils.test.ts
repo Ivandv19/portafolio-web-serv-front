@@ -1,7 +1,9 @@
+// Tests
 import { describe, it, expect } from 'vitest'
 import { useTranslations } from './utils'
 import type { TranslationKey } from '../types'
 
+// Pruebas del hook de traducciones
 describe('useTranslations', () => {
   it('should return a translation function', () => {
     const t = useTranslations('es')
